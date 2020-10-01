@@ -1,0 +1,143 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{tabularx}
+\usepackage[french, english]{babel}
+\usepackage{geometry}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\geometry{hmargin=2cm,vmargin=1.5cm}
+%\renewcommand{\baselinestretch}{0.96}
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+
+{\Large Université de Mons}\\[1ex]
+{\Large Faculté des Sciences}\\[1ex]
+{\Large Département des mathématiques}\\[2.5cm]
+
+\newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+% Title
+\HRule \\[0.3cm]
+{ \LARGE \bfseries Analyse Numérique : Rapport \\[0.3cm]}
+{ \LARGE \bfseries TP 1 \\[0.1cm]}
+\HRule \\[1.5cm]
+
+% Author and supervisor
+\begin{minipage}[t]{0.45\textwidth}
+\begin{flushleft} \large
+\emph{Professeurs:}\\
+Christophe \textsc{Troestler} \\
+Quentin \textsc{Lambotte}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.45\textwidth}
+\begin{flushright} \large
+\emph{Auteurs:} \\
+Loïc \textsc{Dupont} \\
+Maximilien \textsc{Vanhaverbeke} \\
+Paulo \textsc{Marcelis}
+\end{flushright}
+\end{minipage}\\[2ex]
+
+\vfill
+
+% Bottom of the page
+\begin{center}
+\begin{tabular}[t]{c c c}
+\includegraphics[height=1.5cm]{logoumons.jpg} &
+\hspace{0.3cm} &
+\includegraphics[height=1.5cm]{logofs.jpg}
+\end{tabular}
+\end{center}~\\
+ 
+{\large Année académique 2020-2021}
+
+\end{center}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{Exercice 1:}
+Je te laisse compléter Maximilien ;)
+
+\newpage
+\section{Exercice 2:}
+\subsection{Partie a:}
+
+\textbf{Objectif} : Trouver les racines de f : \( \mathbb{R} \rightarrow \mathbb{R} : x \mapsto x^4 - 8x^2 - 4 \).
+Autrement dit, nous devons trouver les solutions de \( P \equiv x^4 - 8x^2 - 4 = 0 \). \newline
+Tout d'abord, posons \( y = x^2 \).
+On obtient : 
+
+\begin{align*}
+	Q &\equiv y^2 - 8y - 4 = 0\\ \\
+	\vartriangle &= (-8)^2 - 4 * 1 * 4 \\
+	       &= 64 + 16 \\
+	       &= 80 \\ \\
+   x_{1,2} &= \frac{-(-8) \pm \sqrt{80}}{2} \\
+   \Rightarrow y_1 = &\frac{8 + \sqrt{80}}{2} ~ et ~ y_2 = \frac{8 - \sqrt{80}}{2} \\
+   \Leftrightarrow y_1 = &\frac{8 + \sqrt{16 * 5}}{2} ~ et ~ y_2 = \frac{8 - \sqrt{16 * 5}}{2} \\
+   \Leftrightarrow y_1 = &\frac{8 + 4 * \sqrt{5}}{2} ~ et ~ y_2 = \frac{8 - 4 * \sqrt{5}}{2} \\
+    \Leftrightarrow y_1 = &4 + 2 * \sqrt{5} ~ et ~ y_2 = 4 - 2\sqrt{5}
+\end{align*}
+
+
+Donc, les racines de Q sont \( y_1 = 4 + 2 * \sqrt{5} ~ et ~ y_2 = 4 - 2 * \sqrt{5}  \) mais nous voulons les racines de P. Donc, on obtient : (on sait que y = $x^2$)
+
+
+\begin{align*}
+	y_1 = 4 + 2 * \sqrt{5} ~ et ~ y_2 = 4 - 2 * \sqrt{5} \\
+	(x_1)^2 = 4 + 2 * \sqrt{5} ~ et ~ (x_2)^2 = 4 - 2 * \sqrt{5} \\
+	Cependant, ~ (x_2)^2 = 4 - 2 * \sqrt{5} ~ est ~ impossible ~ car ~ on ~ a ~ : \\
+	2 = \sqrt{4} \leq \sqrt{5} \leq \sqrt{9} = 3 ~ car ~ \surd ~ est ~ croissante \\
+	Donc ~ 4 - 2 * \sqrt{5} \leq 4 - 2 * \sqrt{4} = 4 - 2 * 2 = 0 \\
+	i.e. ~ (x_2)^2 = 4 - 2 * \sqrt{5} \leq 0 ~~~~~~~~~~~~~~~~~~~~~~~~~ \\
+	Finalement, ~ les ~ racines ~ de ~ P ~ sont ~ : \\
+	(x_1)^2 = 4 + 2 * \sqrt{5} \\
+	\Leftrightarrow x_1 = \pm \sqrt{4 + 2 * \sqrt{5}}	
+\end{align*}
+
+
+\newpage
+\subsection{Partie B:}
+
+\begin{itemize}
+	\item[\(\lceil 1 \rfloor\)] Montrons que f est paire.
+	\item[\(\lceil 2 \rfloor\)] Montrons que f est croissante sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \)
+	\item[\(\lceil 3 \rfloor\)] Montrons que f est décroissante sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \)
+	\item[\(\lceil 4 \rfloor\)] Montrer que f est positive sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \) et sur \( ] -\infty ; \sqrt{4 + 2 * \sqrt{5}} ] \)
+	\item[\(\lceil 5 \rfloor\)] Montrer que f est négative sur \( [ -\sqrt{4 + 2 * \sqrt{5}} ; \sqrt{4 + 2 * \sqrt{5}} ] \)
+\end{itemize}
+
+\textbf{Preuve :}
+
+\begin{itemize}
+	\item[\(\lceil 1 \rfloor\)] trivial car une somme de fonction paire est paire.
+	\item[\(\lceil 2 \rfloor\)] Montrons que \( \forall x, y \in [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [, ~ x \leq y \Rightarrow f(x) \leq f(y) \). \newline
+	Soient x, y \( \in [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \), supposons \( x \leq y \). Montrons que \( f(x) \leq f(y) \). \newline On a :
+	\begin{align*}
+		f(x) \leq f(y) &\Leftrightarrow x^4 - 8x^2 - 4 \leq y^4 - 8y^2 - 4 \\
+		&\Leftrightarrow x^4 - 8x^2 \leq y^4 - 8y^2 \\
+		&\Leftrightarrow 0 \leq (y^4 - x^4) - (8y^2 - 8x^2) \\
+		&\Leftrightarrow 0 \leq (y^4 - x^4) - 8(y^2 - x^2) \\
+	\end{align*}
+	ok car la fonction \( x^2 \) et \( x^4 \) sont croissantes sur \( \mathbb{R}^{+} \) et par hypothèse, \( x \leq y \).	 
+	\item[\(\lceil 3 \rfloor\)] trivial car, par le fait que la fontion f est paire et croissante sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \), on a que f est décroissante sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \).
+	\item[\(\lceil 4 \rfloor\)] par la croissance sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \) ainsi que sa décroissance sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \), on sait que \( \forall x \in ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \cup [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [, f \left( \sqrt{4 + 2 * \sqrt{5}}\right) \leq f \left( x \right) \). Mais \( f \left( \sqrt{4 + 2 * \sqrt{5}} \right) = 0 \) car c'est une racine de f (pareil pour \( f \left( - \sqrt{4 + 2 * \sqrt{5}} \right) = 0 \) ). \newline
+	Donc \( 0 = f \left( \sqrt{4 + 2 * \sqrt{5}} \right) \leq f \left( x \right) \) càd \( 0 \leq f \left( x \right) \). Donc f est positive sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \cup [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \)
+	\item[\(\lceil 5 \rfloor\)] Vu que la fonction est pair et que l'intervalle est de la forme ]-a; a[, alors on peut se restreindre à regarder l'intervalle \( [ 0 ; \sqrt{4 + 2 * \sqrt{5}} ] \).
+	\newline \textbf{TODO}
+	
+\end{itemize}
+
+\newpage
+\subsection{Partie C:}
+Je te laisse compléter Paolo ;)
+
+
+\end{document}
