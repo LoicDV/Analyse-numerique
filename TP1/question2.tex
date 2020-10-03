@@ -7,6 +7,7 @@
 \usepackage{pdfpages}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{hyperref}
 \geometry{hmargin=2cm,vmargin=1.5cm}
 %\renewcommand{\baselinestretch}{0.96}
 
@@ -63,7 +64,76 @@ Paulo \textsc{Marcelis}
 
 \newpage
 \section{Exercice 1:}
-Je te laisse compléter Maximilien ;)
+
+Soit \( I \) un intervalle. Soit \( f \in \mathcal{C}^2(I, \mathbb{R}) \). Supposons que \( \inf\{|\partial f(x)| | x \in I\} > 0 \). On doit montrer que
+$$
+\frac{\sup \{ | \partial^2 f(x) || x \in I \}}{2 \inf \{ |\partial f(x)|| x \in I \}}
+= \sup \left\{ \left. \left| \frac{\partial^2f(\xi)}{2\partial f(\eta)} \right| \right| \xi, \eta \in I \text{ et } \partial f(\eta) \neq 0 \right\}
+$$
+càd
+\begin{equation}
+    \label{eq:1.maj}
+    \frac{\sup \{ | \partial^2 f(x) || x \in I \}}{2 \inf \{ |\partial f(x)|| x \in I \}} \text{ est un majorant de }
+    \left\{ \left. \left| \frac{\partial^2f(\xi)}{2\partial f(\eta)} \right| \right| \xi, \eta \in I \text{ et } \partial f(\eta) \neq 0 \right\}
+\end{equation}
+et
+\begin{equation}
+    \label{eq:1.conv}
+    \exists (z_n) \subset
+    \left\{ \left. \left| \frac{\partial^2f(\xi)}{2\partial f(\eta)} \right| \right| \xi, \eta \in I \text{ et } \partial f(\eta) \neq 0 \right\}
+    \text{ tq } z_n \to
+    \frac{\sup \{ | \partial^2 f(x) || x \in I \}}{2 \inf \{ |\partial f(x)|| x \in I \}}
+\end{equation}
+
+\subsection{Preuve de la majoration}
+
+% \eqref{eq:1.maj} Juste pour ne pas perdre la commande, à supprimer
+Comme un supremum est en particulier un majorant, on sait que
+\begin{equation}
+    \label{eq:1.sup}
+    \forall \xi \in I,~ \sup \{ | \partial^2 f(x) || x \in I \} \geq |\partial^2 f(\xi)|
+\end{equation}
+De même, un infimum étant en particulier un minorant, on sait que
+$$
+\forall \eta \in I \text{ tq } \partial f(\eta) \neq 0,~ \inf \{ |\partial f(x)|| x \in I \} \leq |\partial f(\eta)|
+$$
+Comme \( \inf \{ |\partial f(x)|| x \in I \} > 0 \) par hypothèse, \( \inf \{ |\partial f(x)|| x \in I \} \in \mathbb{R}^{>0} \). On sait aussi que 
+\(\forall \eta \in I \text{ tq } \partial f(\eta) \neq 0,~ |\partial f(\eta)| \in \mathbb{R}^{>0} \).
+Donc, par décroissance de la fonction \( x \mapsto 1/x \) sur \( \mathbb{R}^{>0} \), on a
+\begin{equation}
+    \label{eq:1.inf}
+    \forall \eta \in I \text{ tq } \partial f(\eta) \neq 0,~ \frac{1}{\inf \{ |\partial f(x)|| x \in I \}} \geq \frac{1}{|\partial f(\eta)|}
+\end{equation}
+Finalement, par \eqref{eq:1.sup} et \eqref{eq:1.inf}, on a
+$$
+\forall \xi, \eta \in I \text{ tq } \partial f(\eta) \neq 0,~ \frac{\sup \{ | \partial^2 f(x) || x \in I \}}{2 \inf \{ |\partial f(x)|| x \in I \}}
+\geq \frac{| \partial^2f(\xi)|}{2|\partial f(\eta)|}
+= \left| \frac{\partial^2f(\xi)}{2\partial f(\eta)} \right|
+$$
+On a donc bien montré la propriété \eqref{eq:1.maj}.
+
+\subsection{Preuve de la suite convergente}
+
+Par les propriétés du supremum, on sait que
+$$
+\exists (x_n) \subset \{ | \partial^2 f(x) || x \in I \} \text{ tq } x_n \to \sup \{ | \partial^2 f(x) || x \in I \}
+$$
+De même, par les propriétés de l'infimum, on sait que
+$$
+\exists (y_n) \subset \{ |\partial f(x)|| x \in I \} \text { tq } y_n \to \inf \{ |\partial f(x)|| x \in I \}
+$$
+Prenons \( (z_n) = (x_n/(2y_n)) \). Alors, on a bien
+$$
+(z_n) \subset
+\left\{ \left. \left| \frac{\partial^2f(\xi)}{2\partial f(\eta)} \right| \right| \xi, \eta \in I \text{ et } \partial f(\eta) \neq 0 \right\}
+$$
+Enfin, par les propriétés des limites
+$$
+\lim_{n \to +\infty} z_n
+= \frac{\lim_{n \to +\infty} x_n}{2 \lim_{n \to +\infty} y_n}
+= \frac{\sup \{ | \partial^2 f(x) || x \in I \}}{2 \inf \{ |\partial f(x)|| x \in I \}}
+$$
+On a donc bien montré la propriété \eqref{eq:1.conv}, ce qui termine la preuve de l'exercice 1.
 
 \newpage
 \section{Exercice 2:}
