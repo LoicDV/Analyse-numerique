@@ -210,4 +210,34 @@ Donc, les racines de Q sont \( y_1 = 4 + 2 * \sqrt{5} ~ et ~ y_2 = 4 - 2 * \sqrt
 Je te laisse compléter Paolo ;)
 
 
+\newpage
+\section{Exercice 3:}
+Soit \( f : [a, b] \rightarrow \mathbb{R} \) une application unimodale càd \( \exists m \in [a, b] \) tel que \emph{f est strictement croissante} sur [a, m] et \emph{strictement décroissante} sur [m, b].
+\subsection{Partie a:}
+Montrons que f possède au plus 2 racines. \newline \newline
+Supposons par l'absurde que f possède 3 racines càd \newline 
+\( \exists ~ u \neq v \neq w \in [a, b], ~ f(u) = f(v) = f(w) = 0 \). \newline
+Sans perte de généralité, supposons que \( u < v < w \). \newline
+On a donc 3 cas :
+\begin{enumerate}
+	\item[\(\lceil 1 \rfloor\)] soit \( u \in [a, m[ et v, w \in ]m, b] \)
+	\item[\(\lceil 2 \rfloor\)] soit \( u, v \in [a, m[ et w \in ]m, b] \)
+	\item[\(\lceil 3 \rfloor\)] soit u, v ou w est notre m.
+\end{enumerate}
+Montrons donc que tous les cas sont impossibles.
+\begin{enumerate}
+	\item[\(\lceil 1 \rfloor\)] on sait que \emph{f est strictement décroissante} sur [m, b] (et donc strictement décroissante sur ]m, b] par inclusion) donc \( v < w \Rightarrow f(v) > f(w) \) or ce sont 2 racines de f. \textbf{Contradiction}.
+	\item[\(\lceil 2 \rfloor\)] on sait que \emph{f est strictement croissante} sur [a, m] (et donc strictement croissante sur [a, m[ par inclusion) donc \( u < v \Rightarrow f(u) < f(v) \) or ce sont 2 racines de f. \textbf{Contradiction}.
+	\item[\(\lceil 3 \rfloor\)] $~$ \newline
+	\begin{enumerate}
+		\item[\(\lceil 3.1 \rfloor\)] Si u est m, alors \( u, v ~ et ~ w \in [m, b] \) et par \(\lceil 1 \rfloor\), c'est impossible. \textbf{Contradiction}.
+		\item[\(\lceil 3.2 \rfloor\)] Si w est m, alors \( u, v ~ et ~ w \in [a, m] \) et par \(\lceil 2 \rfloor\), c'est impossible. \textbf{Contradiction}.
+		\item[\(\lceil 3.3 \rfloor\)] Si v est m, alors \( \forall x \in [a, m[, ~ y \in ]m, b], ~ f(x) < f(v) \) (par la stricte croissance de f) et \( f(v) > f(y)\) (par la stricte décroissance de f). Cependant, en particulier, \( x = u \) et \( y = v \) et qui sont racines de f. Donc, \( 0 = f(u) < f(v = 0 \) et \( 0 = f(u) > f(w) = 0 \) qui sont tout 2 impossibles. \textbf{Contradiction}. 
+	\end{enumerate}
+\end{enumerate}
+
+\newpage
+\subsection{Partie b:}
+
+
 \end{document}
