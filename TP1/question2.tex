@@ -1,4 +1,4 @@
-fkjbffkjzebfkb\documentclass[a4paper, 12pt]{article}
+\documentclass[a4paper, 12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{graphicx}
 \usepackage{tabularx}
@@ -237,7 +237,45 @@ Montrons donc que tous les cas sont impossibles.
 \end{enumerate}
 
 \newpage
+
+On suppose maintenant pour le reste de la question 3 que \( f \in \mathcal{C}^{2}([a, b], \mathbb{R}) \). De plus, on suppose que toutes les racines de la dérivée de \( f \) sont simples.
+
 \subsection{Partie b:}
 
+On doit montrer que la dérivée de \( f \) possède une unique racine dans \( ]a, b[ \).
+
+\subsubsection{Existance de la racine}
+
+Montrons d'abord que la dérivée de \( f \) a une racine dans \( ]a, b[ \). Par l'hypothèse \( f \in \mathcal{C}^{2}([a, b], \mathbb{R}) \), on sait que \( \partial f \) est continue.
+On sait également par unimodalité que
+$$
+\exists m \in ]a, b[,~ f \text{ est croissante sur } ]a, m[ \text{ et } f \text{ est décroissante sur } ]m, b[
+$$
+Comme la dérivée d'une fonction croissante (resp. décroissante) est positive (resp. négative), et comme \( (a+m)/2 \in ]a, m[ \) et \( (m+b)/2 \in ]m, b[ \), on sait que
+$$
+\partial f ((a+m)/2) \geq 0 \text{ et } \partial f((m+b)/2) \leq 0
+$$
+On peut alors séparer en 3 cas exhaustifs :
+\begin{itemize}
+    \item Cas 1 : \( f ((a+m)/2) = 0 \) \\
+    Alors, comme \( (a+m)/2 \in ]a, m[ \subset ]a, b[ \), on a bien trouvé une racine de \( \partial f \) dans \( ]a, b[ \).
+    \item Cas 2 : \( f ((m+b)/2) = 0 \) \\
+    Alors, comme \( (m+b)/2 \in ]m, b[ \subset ]a, b[ \), on a bien trouvé une racine de \( \partial f \) dans \( ]a, b[ \).
+    \item Cas 3 : \( \partial f ((a+m)/2) > 0 \) et \( \partial f((m+b)/2) < 0 \) \\
+    Comme on sait que \( \partial f \) est continue, et comme \( \partial f ((a+m)/2) \partial f((m+b)/2) < 0 \), on peut appliquer le théorème des valeurs intermédiaires et on obtient
+    $$
+    \exists \xi \in \left] \frac{a+m}{2}, \frac{m+b}{2} \right[,~ \partial f (\xi) = 0
+    $$
+    Comme \( \xi \in ](a+m)/2, (m+b)/2[ \subset ]a, b[ \), on a bien trouvé une racine de \( \partial f \) dans \( ]a, b[ \).
+\end{itemize}
+Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \partial f \) dans \( ]a, b[ \).
+
+\subsubsection{Unicité de la racine}
+
+Il reste à montrer que cette racine est unique. Supposons par l'absurde que \( \partial f \) a au moins 2 racines distinctes càd
+$$
+\exists \xi_1 \neq \xi_2 \in ]a, b[,~ \partial f(\xi_1) = \partial f(\xi_2) = 0
+$$
+Supposons sans perte de généralité que \( \xi_1 < \xi_2 \).
 
 \end{document}
