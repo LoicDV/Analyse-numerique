@@ -207,9 +207,27 @@ Donc, les racines de Q sont \( y_1 = 4 + 2 * \sqrt{5} ~ et ~ y_2 = 4 - 2 * \sqrt
 
 \newpage
 \subsection{Partie C:}
-Je te laisse compléter Paolo ;)
-
-
+Pour la racine positive de $f$ ($x^{+*}=\sqrt{4+2\sqrt{5}}$),prenons l'intevalle $[\frac{5}{2},\frac{7}{2}]\ni x^{+*}$,\\
+on a :
+\begin{align*}
+&f(\frac{5}{2})f(\frac{7}{2})<0 \\
+\Leftrightarrow&\frac{-239}{16}\frac{769}{16}<0\\
+\end{align*}
+et $f$ est convexe sur $[\frac{5}{2},\frac{7}{2}]$.\\
+Regardons l'intersection de la tangente au point $(\frac{5}{2},f(\frac{5}{2}))$ avec l'axe des abscisses,\\
+\begin{align*}
+&f(\frac{5}{2})+\partial f(\frac{5}{2})(x_1-\frac{5}{2})=0\\
+\Leftrightarrow& x_1=\frac{1139}{360}\\
+\end{align*}
+De même pour la tangente au point $(\frac{7}{2},f(\frac{7}{2}))$,\\
+\begin{align*}
+&f(\frac{7}{2})+\partial f(\frac{7}{2})(x_2-\frac{7}{2})=0\\
+\Leftrightarrow& x_2=\frac{5651}{1848}\\
+\end{align*}
+On a bien que $x_1,x_2\in[\frac{5}{2},\frac{7}{2}]$;\\
+alors la suite $(x_n)_{n\in\mathbb{N}}$ construite par la méthode de Newton est bien définie (pour tout $n , \partial f(x_n)\neq 0$ et $x_n\in [\frac{5}{2},\frac{7}{2}]$) et converge vers l'unique racine de $f$ dans $[\frac{5}{2},\frac{7}{2}]$.\\
+\\
+Même raisonnement pour la racine négative de $f$ ($x^{-*}=-\sqrt{4+2\sqrt{5}}$) en prenant l'intervalle $[-\frac{7}{2},-\frac{5}{2}]\ni x^{-*}$, car $f$ est une fonction paire (sommme de fonctions paires).
 \newpage
 \section{Exercice 3:}
 Soit \( f : [a, b] \rightarrow \mathbb{R} \) une application unimodale càd \( \exists m \in [a, b] \) tel que \emph{f est strictement croissante} sur [a, m] et \emph{strictement décroissante} sur [m, b].
