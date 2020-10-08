@@ -9,6 +9,37 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \geometry{hmargin=2cm,vmargin=1.5cm}
+\usepackage{comment}
+\usepackage{algorithmic, algorithm}
+
+\floatname{algorithm}{Algorithme}
+\newcommand{\EFFECT}{\textbf{Effet : }}
+\renewcommand{\algorithmicrequire}{\textbf{Entrée :}}
+\renewcommand{\algorithmicensure}{\textbf{Sortie :}}
+\renewcommand{\algorithmicend}{\textbf{fin}}
+\renewcommand{\algorithmicif}{\textbf{si}}
+\renewcommand{\algorithmicthen}{\textbf{alors}}
+\renewcommand{\algorithmicelse}{\textbf{sinon}}
+\renewcommand{\algorithmicelsif}{\algorithmicelse\ \algorithmicif}
+\renewcommand{\algorithmicendif}{\algorithmicend\ \algorithmicif}
+\renewcommand{\algorithmicfor}{\textbf{pour}}
+\renewcommand{\algorithmicforall}{\textbf{pour tout}}
+\renewcommand{\algorithmicdo}{\textbf{faire}}
+\renewcommand{\algorithmicendfor}{\algorithmicend\ \algorithmicfor}
+\renewcommand{\algorithmicwhile}{\textbf{tant que}}
+\renewcommand{\algorithmicendwhile}{\algorithmicend\ \algorithmicwhile}
+\renewcommand{\algorithmicloop}{\textbf{boucle}}
+\renewcommand{\algorithmicendloop}{\algorithmicend\ \algorithmicloop}
+\renewcommand{\algorithmicrepeat}{\textbf{répéter}}
+\renewcommand{\algorithmicuntil}{\textbf{jusqu'à}}
+\renewcommand{\algorithmicprint}{\textbf{imprimer}}
+\renewcommand{\algorithmicreturn}{\textbf{retourner}}
+\renewcommand{\algorithmictrue}{\textbf{vrai}}
+\renewcommand{\algorithmicfalse}{\textbf{faux}}
+
+\makeatletter
+\renewcommand{\fnum@algorithm}{\fname@algorithm}
+\makeatother
 %\renewcommand{\baselinestretch}{0.96}
 
 \begin{document}
@@ -295,5 +326,33 @@ $$
 \exists \xi_1 \neq \xi_2 \in ]a, b[,~ \partial f(\xi_1) = \partial f(\xi_2) = 0
 $$
 Supposons sans perte de généralité que \( \xi_1 < \xi_2 \).
+
+
+\newpage
+\subsection{Partie c:}
+
+\begin{algorithm}
+
+\caption{size(L)}
+\label{Modele pour un algo}
+
+\begin{algorithmic}
+
+\REQUIRE L, une liste chainée.
+\ENSURE La longueur de la liste chainée.
+\STATE $compteur \leftarrow 0$
+\STATE $tmp \leftarrow L.head$
+\WHILE {$tmp \neq None$}
+\STATE $compteur \leftarrow compteur + 1$
+\STATE $tmp \leftarrow tmp.next$
+\ENDWHILE
+\RETURN compteur.
+
+\end{algorithmic}
+
+\end{algorithm}
+
+
+
 
 \end{document}
