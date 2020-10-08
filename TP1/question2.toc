@@ -1,0 +1,14 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Exercice 1:}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Preuve de la majoration}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Preuve de la suite convergente}{2}{subsection.1.2}
+\contentsline {section}{\numberline {2}Exercice 2:}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Partie a:}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Partie B:}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Partie C:}{5}{subsection.2.3}
+\contentsline {section}{\numberline {3}Exercice 3:}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Partie a:}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Partie b:}{7}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Existance de la racine}{7}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Unicit\IeC {\'e} de la racine}{7}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Partie c:}{8}{subsection.3.3}

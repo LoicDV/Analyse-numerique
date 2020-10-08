@@ -333,20 +333,57 @@ Supposons sans perte de généralité que \( \xi_1 < \xi_2 \).
 
 \begin{algorithm}
 
-\caption{size(L)}
+\caption{Recherche de racine}
 \label{Modele pour un algo}
 
 \begin{algorithmic}
 
-\REQUIRE L, une liste chainée.
-\ENSURE La longueur de la liste chainée.
-\STATE $compteur \leftarrow 0$
-\STATE $tmp \leftarrow L.head$
-\WHILE {$tmp \neq None$}
-\STATE $compteur \leftarrow compteur + 1$
-\STATE $tmp \leftarrow tmp.next$
+\REQUIRE f, une fonction unimodale ; \( \partial f \), dérivée de f ; \( a, b  \in \mathbb{R} \).
+\ENSURE L'ensemble des racines notée \( \varnothing \), \{ \( x_1 \) \} ou \{ \( x_1, x_2 \) \}.
+\STATE \( fa \leftarrow f(a) \)
+\STATE \( fb \leftarrow f(b) \)
+\STATE \( dfa \leftarrow df(a) \)
+\STATE \( dfb \leftarrow df(b) \)
+\IF {\( fa \times fb > 0 \)}
+\RETURN \( \varnothing \)
+\ELSIF {\( fa \times fb = 0 \)}
+\IF {\( fa = 0 ~ et ~ fb = 0 \)}
+\RETURN \{ a, b \}
+\ELSIF {\( fa = 0 \)}
+\IF {\( fb > 0 \)}
+\RETURN \{ a \}
+\ELSE
+\IF {\( dfa \leq 0 \)}
+\RETURN \{ a \}
+\ELSE
+\STATE \( x \leftarrow \frac{|a-b|}{2} \)
+\WHILE {\( f(x) < 0 \)}
+\STATE \(x \leftarrow \frac{|a-x|}{2} \)
 \ENDWHILE
-\RETURN compteur.
+\STATE \( root \leftarrow bissection(f, x, b) \)
+\RETURN {a, root}
+\ENDIF
+\ENDIF
+\ELSE
+\IF {\( fa > 0 \)}
+\RETURN \{ b \}
+\ELSE
+\IF {\( dfb \geq 0 \)}
+\RETURN \{ a \}
+\ELSE
+\STATE \( x \leftarrow \frac{|a-b|}{2} \)
+\WHILE {\( f(x) > 0 \)}
+\STATE \(x \leftarrow \frac{|x-b|}{2} \)
+\ENDWHILE
+\STATE \( root \leftarrow bissection(f, a, x) \)
+\RETURN {root, b}
+\ENDIF
+\ENDIF
+\ENDIF
+\ELSE
+\STATE \( root \leftarrow bissection(f, a, b) \)
+\RETURN {root}
+\ENDIF
 
 \end{algorithmic}
 
