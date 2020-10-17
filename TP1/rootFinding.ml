@@ -6,34 +6,35 @@ let rootFinding f df a b =
 
         if (fa < 0. && fb > 0.) || (fa < 0. && fb = 0. && dfb > 0.) then
             let x = Root1D.brent f a b in
-                x;
+                [x]
 
-        if (fa > 0. && fb < 0.) || (fa = 0. && fb < 0. && dfa < 0.) then
+        else if (fa > 0. && fb < 0.) || (fa = 0. && fb < 0. && dfa < 0.) then
             let x = Root1D.brent f a b in
-                x;
+                [x]
 
-        if fa = 0. && fb = 0. then
-            a; b;
+        else if fa = 0. && fb = 0. then
+            [a; b]
 
-        if fa = 0. && fb > 0. then
-            a;
+        else if fa = 0. && fb > 0. then
+            [a]
 
-        if fa > 0. && fb = 0. then
-            b;
+        else if fa > 0. && fb = 0. then
+            [b]
 
-        if fa < 0. && fb = 0. && dfb < 0. then
+        else if fa < 0. && fb = 0. && dfb < 0. then
             let m = Root1D.brent df a b in
                 let x = Root1D.brent f a m in
-                    x; m;
+                    [x; m]
 
-        if fa = 0. && fb < 0. && dfa > 0. then
+        else if fa = 0. && fb < 0. && dfa > 0. then
             let m = Root1D.brent df a b in
                 let x = Root1D.brent f m b in
-                    a; x;
+                    [a; x]
 
-        if fa < 0. && fb < 0. && (dfa *. dfb) < 0. then
+        else if fa < 0. && fb < 0. && (dfa *. dfb) < 0. then
             let m = Root1D.brent df a b in
                 let x = Root1D.brent f a m and y = Root1D.brent f m b in
-                    x; y;
+                    [x; y]
 
-        None;;
+        else
+	    []
