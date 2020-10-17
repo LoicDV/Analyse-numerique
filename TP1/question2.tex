@@ -9,37 +9,6 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \geometry{hmargin=2cm,vmargin=1.5cm}
-\usepackage{comment}
-\usepackage{algorithmic, algorithm}
-
-\floatname{algorithm}{Algorithme}
-\newcommand{\EFFECT}{\textbf{Effet : }}
-\renewcommand{\algorithmicrequire}{\textbf{Entrée :}}
-\renewcommand{\algorithmicensure}{\textbf{Sortie :}}
-\renewcommand{\algorithmicend}{\textbf{fin}}
-\renewcommand{\algorithmicif}{\textbf{si}}
-\renewcommand{\algorithmicthen}{\textbf{alors}}
-\renewcommand{\algorithmicelse}{\textbf{sinon}}
-\renewcommand{\algorithmicelsif}{\algorithmicelse\ \algorithmicif}
-\renewcommand{\algorithmicendif}{\algorithmicend\ \algorithmicif}
-\renewcommand{\algorithmicfor}{\textbf{pour}}
-\renewcommand{\algorithmicforall}{\textbf{pour tout}}
-\renewcommand{\algorithmicdo}{\textbf{faire}}
-\renewcommand{\algorithmicendfor}{\algorithmicend\ \algorithmicfor}
-\renewcommand{\algorithmicwhile}{\textbf{tant que}}
-\renewcommand{\algorithmicendwhile}{\algorithmicend\ \algorithmicwhile}
-\renewcommand{\algorithmicloop}{\textbf{boucle}}
-\renewcommand{\algorithmicendloop}{\algorithmicend\ \algorithmicloop}
-\renewcommand{\algorithmicrepeat}{\textbf{répéter}}
-\renewcommand{\algorithmicuntil}{\textbf{jusqu'à}}
-\renewcommand{\algorithmicprint}{\textbf{imprimer}}
-\renewcommand{\algorithmicreturn}{\textbf{retourner}}
-\renewcommand{\algorithmictrue}{\textbf{vrai}}
-\renewcommand{\algorithmicfalse}{\textbf{faux}}
-
-\makeatletter
-\renewcommand{\fnum@algorithm}{\fname@algorithm}
-\makeatother
 %\renewcommand{\baselinestretch}{0.96}
 
 \begin{document}
@@ -269,8 +238,8 @@ Supposons par l'absurde que f possède 3 racines càd \newline
 Sans perte de généralité, supposons que \( u < v < w \). \newline
 On a donc 3 cas :
 \begin{enumerate}
-	\item[\(\lceil 1 \rfloor\)] soit \( u \in [a, m[ et v, w \in ]m, b] \)
-	\item[\(\lceil 2 \rfloor\)] soit \( u, v \in [a, m[ et w \in ]m, b] \)
+	\item[\(\lceil 1 \rfloor\)] soit \( u \in [a, m[ ~ et ~ v, w \in ]m, b] \)
+	\item[\(\lceil 2 \rfloor\)] soit \( u, v \in [a, m[ ~ et ~ w \in ]m, b] \)
 	\item[\(\lceil 3 \rfloor\)] soit u, v ou w est notre m.
 \end{enumerate}
 Montrons donc que tous les cas sont impossibles.
@@ -388,8 +357,6 @@ Supposons sans perte de généralité que \( \xi_1 < \xi_2 \).
 \end{algorithmic}
 
 \end{algorithm}
-
-
 
 
 \end{document}
