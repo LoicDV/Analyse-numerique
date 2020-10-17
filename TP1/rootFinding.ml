@@ -1,3 +1,5 @@
+(* import Root1d *)
+
 let rootFinding f df a b =
     (* Rappel : nous ne pouvons avoir que MAX 2 racines car unimodale *)
     let fa = f a and fb = f b and dfa = df f a and dfb = df f b in
