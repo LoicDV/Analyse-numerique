@@ -1,0 +1,4 @@
+(executables
+    (names        rootFinding)
+    (public_names rootFinding)
+    (libraries    root1d))
