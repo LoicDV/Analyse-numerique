@@ -20,7 +20,7 @@ let q5 a b c =
                            let x1 = sqrt (-.c /. a) and
                            x2 = -.sqrt (-.c /. a) in
                                print_float x1;
-                               print_newline;
+                               print_string"\n";
                                print_float x2;
 
     if c = 0. then
@@ -36,10 +36,16 @@ let q5 a b c =
             let aa = -.a and bb = -.b and cc = -.c in
                 let f x = aa *. x ** 2. +. bb *. x +. cc and
                 df x = 2. *. x *. aa +. bb in
-                    x1, x2 = rootFinding.rootFinding f df _ _
+                    x1, x2 = rootFinding.rootFinding f df -.10 10.
                     (* Il faut trouver l'intervalle *)
                     print_float x1;
-                    print_newline;
+                    print_string"\n";
                     print_float x2;
-
+        else
+            let f x = a *. x ** 2. +. b *. x +. c and
+            df x = 2. *. x *. a +. b in
+                x1, x2 = rootFinding.rootFinding f df -.10 10.
+                print_float x1;
+                print_string"\n";
+                print_float x2;
     None;;
