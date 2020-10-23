@@ -1,0 +1,1 @@
+si -1<a<1 ,alors il n'y a qu'un seul x tel que f(x) = y.

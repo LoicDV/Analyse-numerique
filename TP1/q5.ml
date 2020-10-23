@@ -8,15 +8,15 @@ let q5 a b c =
 
     if a = 0. then
         match (b, c) with
-            (0., c) -> print_string "no roots"
-           |(b, 0.) -> print_float 0.;
-           |(b, c)  -> let x = -.c /. b in print_float x;
+            (0., c) -> print_string "no roots"                              (*(0,0,c)   Cas 1*) 
+           |(b, 0.) -> print_float 0.;                                      (*(0,b,0)   Cas 2*)
+           |(b, c)  -> let x = -.c /. b in print_float x;                   (*(0,b,c)        *)
 
     if b = 0. then
         match (a, c) with
-            (0., c) -> print_string "no roots"
-           |(a, 0.) -> print_float 0.;
-           |(a, c)  -> if (a < 0. && c > 0.) || (a > 0. && c < 0.) then
+            (0., c) -> print_string "no roots"                              (*(0,0,c)   Cas 1*)
+           |(a, 0.) -> print_float 0.;                                      (*(a,0,0)   Cas 3*)
+           |(a, c)  -> if (a < 0. && c > 0.) || (a > 0. && c < 0.) then     (*(a,0,c)        *)
                            let x1 = sqrt (-.c /. a) and
                            x2 = -.sqrt (-.c /. a) in
                                print_float x1;
@@ -25,13 +25,20 @@ let q5 a b c =
 
     if c = 0. then
         match (a, b) with
-            (0., b) -> print_float 0.;
-           |(a, 0.) -> print_float 0.;
-           |(a, b) -> let x = -.b /. a in
+            (0., b) -> print_float 0.;                                      (*(0,b,0)   Cas 2*)
+           |(a, 0.) -> print_float 0.;                                      (*(a,0,0)   Cas 3*)
+           |(a, b) -> let x = -.b /. a in                                   (*(a,b,0)        *)
                           print_float 0.;
                           print_float x;
+(*Il y a des cas qui se répetent dans les 3 if ci dessus*)
+
+
+
 
     if a != 0. && b != 0. && c != 0. then
+    (* -b/a = somme des racines , c/a = produit des racines ,
+        si c/a>0 alors -b/a peut etre utiliser comme borne car somme de deux positifs >= max{des deux positifs} (de meme pour negatifs)
+        *)
         if a > 0. then
             let aa = -.a and bb = -.b and cc = -.c in
                 let f x = aa *. x ** 2. +. bb *. x +. cc and
