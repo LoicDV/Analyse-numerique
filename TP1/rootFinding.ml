@@ -22,7 +22,7 @@ let rootFinding f df a b =
         else if fa < 0. && fb = 0. && dfb < 0. then
             let m = Root1D.brent df a b in
                 let x = Root1D.brent f a m in
-                    [x; m]
+                    [x; b]
 
         else if fa = 0. && fb < 0. && dfa > 0. then
             let m = Root1D.brent df a b in
