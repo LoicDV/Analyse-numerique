@@ -1,3 +1,6 @@
+open Printf
+open List
+
 let rootFinding f df a b =
     (* Rappel : nous ne pouvons avoir que MAX 2 racines car unimodale *)
     let fa = f a and fb = f b and dfa = df a and dfb = df b in
@@ -35,4 +38,16 @@ let rootFinding f df a b =
                     [x; y]
 
         else
-	    []
+	    [];;
+
+let display list =
+    List.iter (printf "%f\n") list;;
+
+let f x = -.2. *. x ** 2. -. 4. *. x +. 2.
+let df x = -.4. *. x -. 4.
+let a = -.10.
+let b = 10.
+
+let sol = rootFinding f df a b;;
+
+display sol;;
