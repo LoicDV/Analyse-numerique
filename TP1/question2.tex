@@ -92,7 +92,7 @@ Paulo \textsc{Marcelis}
 \newpage
 \section{Exercice 1:}
 
-Soit \( I \) un intervalle. Soit \( f \in \mathcal{C}^2(I, \mathbb{R}) \). Supposons que \( \inf\{|\partial f(x)| | x \in I\} > 0 \). On doit montrer que
+Soit \( I \) un intervalle compact non-vide. Soit \( f \in \mathcal{C}^2(I, \mathbb{R}) \). Supposons que \( \inf\{|\partial f(x)| | x \in I\} > 0 \). On doit montrer que
 $$
 \frac{\sup \{ | \partial^2 f(x) || x \in I \}}{2 \inf \{ |\partial f(x)|| x \in I \}}
 = \sup \left\{ \left. \left| \frac{\partial^2f(\xi)}{2\partial f(\eta)} \right| \right| \xi, \eta \in I \text{ et } \partial f(\eta) \neq 0 \right\}
@@ -112,9 +112,17 @@ et
     \frac{\sup \{ | \partial^2 f(x) || x \in I \}}{2 \inf \{ |\partial f(x)|| x \in I \}}
 \end{equation}
 
+\subsection{Remarque sur l'existance du membre de gauche}
+
+On sait par l'hypothèse \( f \in \mathcal{C}^2(I, \mathbb{R}) \) que \( \partial f \) et \( \partial^2 f \) sont des fonctions continues sur \( I \). Comme la valeur absolue est aussi une fonction continue, par composition de fonctions continues, \( | \partial f | \) et \( | \partial^2 f | \) sont des aussi fonctions continues sur \( I \). \\
+Alors, comme \( I \) est un compact non-vide par hypothèse, le théorème des bornes atteintes nous dit que ces fonctions atteignent leurs bornes. En particulier,
+$$
+\sup \{ | \partial^2 f(x) || x \in I \} \in \mathbb{R} \quad \text{et} \quad 
+\inf \{ |\partial f(x)|| x \in I \} \in \mathbb{R}
+$$
+
 \subsection{Preuve de la majoration}
 
-% \eqref{eq:1.maj} Juste pour ne pas perdre la commande, à supprimer
 Comme un supremum est en particulier un majorant, on sait que
 \begin{equation}
     \label{eq:1.sup}
@@ -139,6 +147,8 @@ $$
 $$
 On a donc bien montré la propriété \eqref{eq:1.maj}.
 
+\newpage
+
 \subsection{Preuve de la suite convergente}
 
 Par les propriétés du supremum, on sait que
@@ -149,7 +159,11 @@ De même, par les propriétés de l'infimum, on sait que
 $$
 \exists (y_n) \subset \{ |\partial f(x)|| x \in I \} \text { tq } y_n \to \inf \{ |\partial f(x)|| x \in I \}
 $$
-Prenons \( (z_n) = (x_n/(2y_n)) \). Alors, on a bien
+Remarquons que par hypothèse, \( \inf\{|\partial f(x)| | x \in I\} > 0 \). Comme un infimum est en particulier un minorant, on sait que
+$$
+\forall \eta \in I,~ |\partial f(\eta)| \geq \inf\{|\partial f(x)| | x \in I\} > 0 \quad \text{et donc} \quad \forall \eta \in I,~ \partial f(\eta) \neq 0
+$$
+En particulier, la suite \( (y_n) \) ne s'annule donc jamais. Prenons \( (z_n) = (x_n/(2y_n)) \). Alors, on a bien
 $$
 (z_n) \subset
 \left\{ \left. \left| \frac{\partial^2f(\xi)}{2\partial f(\eta)} \right| \right| \xi, \eta \in I \text{ et } \partial f(\eta) \neq 0 \right\}
