@@ -39,15 +39,3 @@ let rootFinding f df a b =
 
         else
 	    [];;
-
-let display list =
-    List.iter (printf "%f\n") list;;
-
-let f x = -.2. *. x ** 2. -. 4. *. x +. 2.
-let df x = -.4. *. x -. 4.
-let a = -.10.
-let b = 10.
-
-let sol = rootFinding f df a b;;
-
-display sol;;

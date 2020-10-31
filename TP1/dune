@@ -1,15 +1,3 @@
 (executables
-    (names        rootFinding)
-    (public_names rootFinding)
-    (modules      rootFinding)
+    (names        q5 q6)
     (libraries    root1d))
-    
-(executables
-    (names        q5)
-    (public_names q5)
-    (modules      q5))
-    
-(executables
-    (names        q6)
-    (public_names q6)
-    (modules      q6))
