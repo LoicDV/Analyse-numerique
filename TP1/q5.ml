@@ -12,14 +12,13 @@ let q5 a b c =
            |(b, c)  -> let x = -.c /. b in print_float x;
 
     if a > 0. then
-        a, b, c = change_sign a b c
+        a, b, c = change_sign a b c;
 
-    if a != 0. && b != 0. && c != 0. then
-        let f x = a *. x ** 2. +. b *. x +. c and
-            df x = 2. *. x *. a +. b in
-                [x1, x2] = RootFinding.rootFinding f df _ _
-                (* Il faut trouver l'intervalle *)
-                [x1, x2]
+    let f x = a *. x ** 2. +. b *. x +. c and
+        df x = 2. *. x *. a +. b in
+            liste = RootFinding.rootFinding f df _ _
+            (* Il faut trouver l'intervalle *)
+            liste
     None;;
 
 let display liste =
