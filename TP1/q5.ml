@@ -1,4 +1,8 @@
 open Sys;;
+open Printf
+
+let display liste =
+    List.iter (printf "%.8f\n") liste;;
 
 let change_sign a b c =
     let a = -.a and b = -.b and c = -.c in
@@ -7,12 +11,12 @@ let change_sign a b c =
 let q5 a b c =
     if a = 0. then
         match (b, c) with
-            (0., c) -> print_string "no roots"
-           |(b, 0.) -> print_float 0.;
-           |(b, c)  -> let x = -.c /. b in print_float x;
+            (0., c) -> display []
+           |(b, 0.) -> display [0.]
+           |(b, c)  -> let x = -.c /. b in display [x];
 
     if a > 0. then
-        a, b, c = change_sign a b c;
+        let a, b, c = change_sign a b c;
 
     let f x = a *. x ** 2. +. b *. x +. c and
         df x = 2. *. x *. a +. b in
@@ -20,9 +24,6 @@ let q5 a b c =
             (* Il faut trouver l'intervalle *)
             liste
     None;;
-
-let display liste =
-    List.iter (printf "%.8f\n") liste;;
 
 let () =
     let a = Sys.argv 2;
