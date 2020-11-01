@@ -31,8 +31,11 @@ let rootFinding f df a b =
 
         else if fa < 0. && fb < 0. && (dfa *. dfb) < 0. then
             let m = Root1D.brent df a b in
-                let x = Root1D.brent f a m and y = Root1D.brent f m b in
-                    [x; y]
+                if f m >= 0. then
+                    let x = Root1D.brent f a m and y = Root1D.brent f m b in
+                        [x; y]
+                else
+                    [];
 
         else
 	    [];;

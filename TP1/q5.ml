@@ -26,8 +26,8 @@ let q5 a b c =
 
 let () =
     let array = Sys.argv in
-        let a = float_of_string array.(2) and
-        b = float_of_string array.(3) and
-        c = float_of_string array.(4) in
+        let a = float_of_string array.(1) and
+        b = float_of_string array.(2) and
+        c = float_of_string array.(3) in
             let liste = q5 a b c in
                 display liste;;
