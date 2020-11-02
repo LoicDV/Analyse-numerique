@@ -1,28 +1,40 @@
-let rec root a y i op1 op2 op3 =
+let rec root a y i op1 op2 = 
     let arc = acos ((-.1.) /. a) in
-        if op2 (2.0 *. i *. (op1 Float.pi arc)) 0. then
-	    []
-	else
-	    let f x = x +. (a *. (sin x)) -. y in
-	        let df x = 1. +. (a *. (cos x)) in
-		    List.append (RootFinding.rootFinding f df (op1 (2. *. i *. Float.pi) arc)
-		                             (2. *. (op3 i 1.) *. (op1 Float.pi arc)))
-			   (root a y (op3 i 1.) op1 op2 op3);;
+        let f x = x +. (a *. (sin x)) -. y in
+            let df x = 1. +. (a *. (cos x)) in
+                let list = RootFinding.rootFinding f df
+                           (op1 (2. *. i *. Float.pi) arc)
+		           (op1 (2. *. (i +. 1.) *. Float.pi) arc) in
+                    if list = [] then
+                        []
+                    else
+                        List.append list (root a y (op2 i 1.) op1 op2);;
 
 let q6 a y =
     if a >= (-.1.) && a <= 1. then
-        root a y 0. (+.) (>) (+.)
+	let f x = x +. (a *. (sin x)) -. y in
+            let r = Root1D.brent f (y -. 1.) (y +. 1.) in
+                [r]
     else if a >= 1. then
-        root a y 0. (+.) (>) (+.)
+        List.append (root a y 0. (-.) (+.))
+                    (root a y (-.1.) (-.) (-.))
     else
-        root a y 0. (+.) (>) (+.);;
+        List.append (root a y 0. (+.) (+.))
+                    (root a y (-.1.) (+.) (-.));;
 
 let display liste =
-    List.iter (printf "%.8f\n") liste;;
+    List.iter (Printf.printf "%.8f\n") liste;;
 
 let () =
+    let a = read_float () in
+        let y = read_float () in
+            display (q6 a y)
+
+(* Il reste à réussir à mettre les float dans la commande *)
+(*
+let () =
     let array = Sys.argv in
-        let a = float_of_string array.(1) and
-            y = float_of_string array.(2) in
-	        let liste = q6 a y in
-		    display liste;;
+        let a = Float.of_string array.(1) and
+            y = Float.of_string array.(2) in
+		Printf.printf a;;
+*)
