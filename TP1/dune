@@ -1,3 +1,3 @@
 (executables
-    (names        q5 q6)
+    (names        q5 q6 rootFinding)
     (libraries    root1d))
