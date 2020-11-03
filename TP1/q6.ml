@@ -1,4 +1,4 @@
-let rec root a y i op1 op2 = 
+let rec root a y i op1 op2 =
     let arc = acos ((-.1.) /. a) in
         let f x = x +. (a *. (sin x)) -. y in
             let df x = 1. +. (a *. (cos x)) in
@@ -30,15 +30,8 @@ let display liste =
     List.iter (Printf.printf "%.8f\n") liste;;
 
 let () =
-    let a = read_float () in
-        let y = read_float () in
-            display (q6 a y)
-
-(* Il reste à réussir à mettre les float dans la commande *)
-(*
-let () =
     let array = Sys.argv in
         let a = Float.of_string array.(1) and
             y = Float.of_string array.(2) in
-		Printf.printf a;;
-*)
+	        let liste = q6 a y in
+                display liste;;
