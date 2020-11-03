@@ -16,11 +16,15 @@ let q6 a y =
             let r = Root1D.brent f (y -. 1.) (y +. 1.) in
                 [r]
     else if a >= 1. then
-        List.append (root a y 0. (-.) (+.))
-                    (root a y (-.1.) (-.) (-.))
+        let arc = acos ((-.1.) /. a) in
+            let origin = Float.round ((y +. arc) /. (2. *. Float.pi)) in
+                List.append (root a y origin (-.) (+.))
+                            (root a y (origin -. 1.) (-.) (-.))
     else
-        List.append (root a y 0. (+.) (+.))
-                    (root a y (-.1.) (+.) (-.));;
+        let arc = acos ((-.1.) /. a) in
+            let origin = Float.round ((y -. arc) /. (2. *. Float.pi)) in
+                List.append (root a y origin (+.) (+.))
+                            (root a y (origin -. 1.) (+.) (-.));;
 
 let display liste =
     List.iter (Printf.printf "%.8f\n") liste;;
