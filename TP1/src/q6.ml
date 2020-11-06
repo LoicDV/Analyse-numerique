@@ -4,7 +4,7 @@ let rec root a y i op1 op2 =
             let df x = 1. +. (a *. (cos x)) in
                 let list = RootFinding.rootFinding f df
                            (op1 (2. *. i *. Float.pi) arc)
-		           (op1 (2. *. (i +. 1.) *. Float.pi) arc) in
+                   (op1 (2. *. (i +. 1.) *. Float.pi) arc) in
                     if list = [] then
                         []
                     else
@@ -12,7 +12,7 @@ let rec root a y i op1 op2 =
 
 let q6 a y =
     if a >= (-.1.) && a <= 1. then
-	let f x = x +. (a *. (sin x)) -. y in
+        let f x = x +. (a *. (sin x)) -. y in
             let r = Root1D.brent f (y -. 1.) (y +. 1.) in
                 [r]
     else if a >= 1. then

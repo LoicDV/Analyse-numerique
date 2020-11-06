@@ -25,6 +25,6 @@ tar dist: clean
 
 clean::
 	dune clean
-	-$(RM) -r $(wildcard *~ *.tar.gz *.tgz)
+	-$(RM) -r $(wildcard *~ *.tar.gz)
 
 .PHONY: all build run test tar dist clean

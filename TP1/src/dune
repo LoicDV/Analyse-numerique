@@ -1,3 +1,7 @@
 (executables
-    (names        q5 q6 rootFinding)
+    (names        q5 q6)
     (libraries    root1d))
+
+(alias
+    (name         exe)
+    (deps         q5.exe q6.exe))
