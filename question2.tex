@@ -190,7 +190,7 @@ On obtient :
 	\vartriangle &= (-8)^2 - 4 * 1 * 4 \\
 	       &= 64 + 16 \\
 	       &= 80 \\ \\
-   x_{1,2} &= \frac{-(-8) \pm \sqrt{80}}{2} \\
+   y_{1,2} &= \frac{-(-8) \pm \sqrt{80}}{2} \\
    \Rightarrow y_1 = &\frac{8 + \sqrt{80}}{2} ~ et ~ y_2 = \frac{8 - \sqrt{80}}{2} \\
    \Leftrightarrow y_1 = &\frac{8 + \sqrt{16 * 5}}{2} ~ et ~ y_2 = \frac{8 - \sqrt{16 * 5}}{2} \\
    \Leftrightarrow y_1 = &\frac{8 + 4 * \sqrt{5}}{2} ~ et ~ y_2 = \frac{8 - 4 * \sqrt{5}}{2} \\
@@ -221,7 +221,7 @@ Donc, les racines de Q sont \( y_1 = 4 + 2 * \sqrt{5} ~ et ~ y_2 = 4 - 2 * \sqrt
 	\item[\(\lceil 1 \rfloor\)] Montrons que f est paire.
 	\item[\(\lceil 2 \rfloor\)] Montrons que f est croissante sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \)
 	\item[\(\lceil 3 \rfloor\)] Montrons que f est décroissante sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \)
-	\item[\(\lceil 4 \rfloor\)] Montrer que f est positive sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \) et sur \( ] -\infty ; \sqrt{4 + 2 * \sqrt{5}} ] \)
+	\item[\(\lceil 4 \rfloor\)] Montrer que f est positive sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \) et sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \)
 	\item[\(\lceil 5 \rfloor\)] Montrer que f est négative sur \( [ -\sqrt{4 + 2 * \sqrt{5}} ; \sqrt{4 + 2 * \sqrt{5}} ] \)
 \end{itemize}
 
@@ -236,16 +236,21 @@ Donc, les racines de Q sont \( y_1 = 4 + 2 * \sqrt{5} ~ et ~ y_2 = 4 - 2 * \sqrt
 		&\Leftrightarrow x^4 - 8x^2 \leq y^4 - 8y^2 \\
 		&\Leftrightarrow 0 \leq (y^4 - x^4) - (8y^2 - 8x^2) \\
 		&\Leftrightarrow 0 \leq (y^4 - x^4) - 8(y^2 - x^2) \\
+		&\Leftrightarrow 8 \leq (y^2 + x^2) &&\text{pour y $\neq$ x} \\
 	\end{align*}
-	ok car la fonction \( x^2 \) et \( x^4 \) sont croissantes sur \( \mathbb{R}^{+} \) et par hypothèse, \( x \leq y \).	 
+Vrai car vrai pour $ y = x = \sqrt{4+2*\sqrt{5}}$ et vrai pour toutes valeurs plus grandes car la fonction $x^2$ est croissantes sur $\mathbb{R}^+$. Pour $x=y$ , trivial car $f(x)=f(y)$.	
 	\item[\(\lceil 3 \rfloor\)] trivial car, par le fait que la fontion f est paire et croissante sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \), on a que f est décroissante sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \).
-	\item[\(\lceil 4 \rfloor\)] par la croissance sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \) ainsi que sa décroissance sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \), on sait que \( \forall x \in ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \cup [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [, f \left( \sqrt{4 + 2 * \sqrt{5}}\right) \leq f \left( x \right) \). Mais \( f \left( \sqrt{4 + 2 * \sqrt{5}} \right) = 0 \) car c'est une racine de f (pareil pour \( f \left( - \sqrt{4 + 2 * \sqrt{5}} \right) = 0 \) ). \newline
+	\item[\(\lceil 4 \rfloor\)] par la croissance sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \) ainsi que sa décroissance sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \), on sait que \( \forall x \in ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \cup [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [, f \left( \sqrt{4 + 2 * \sqrt{5}}\right) \leq f \left( x \right) \) (car $f$ est paire). Mais \( f \left( \sqrt{4 + 2 * \sqrt{5}} \right) = 0 \) car c'est une racine de f (pareil pour \( f \left( - \sqrt{4 + 2 * \sqrt{5}} \right) = 0 \) ). \newline
 	Donc \( 0 = f \left( \sqrt{4 + 2 * \sqrt{5}} \right) \leq f \left( x \right) \) càd \( 0 \leq f \left( x \right) \). Donc f est positive sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \cup [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \)
-	\item[\(\lceil 5 \rfloor\)] Vu que la fonction est pair et que l'intervalle est de la forme ]-a; a[, alors on peut se restreindre à regarder l'intervalle \( [ 0 ; \sqrt{4 + 2 * \sqrt{5}} ] \).
-	\newline \textbf{TODO}
-	
+	\item[\(\lceil 5 \rfloor\)] Montrons que $f$ est négative sur $ [ -\sqrt{4 + 2 * \sqrt{5}} ; \sqrt{4 + 2 * \sqrt{5}} ] $
+\begin{itemize}
+	\item[$\bullet$] Montrons que $-\sqrt{4 + 2 * \sqrt{5}}$ et $\sqrt{4 + 2 * \sqrt{5}}$ sont des racines simples :\\
+	$\partial f(\sqrt{4 + 2 * \sqrt{5}}) > 0 $ et $\partial f(-\sqrt{4 + 2 * \sqrt{5}}) < 0$ donc ce sont des racines simples.
+	\item[$\bullet$] On sait que $f$ est continue, ses racines sont simples et $f$ est positive sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \cup [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \) donc $f$ est négative sur $ [ -\sqrt{4 + 2 * \sqrt{5}} ; \sqrt{4 + 2 * \sqrt{5}} ] $
 \end{itemize}
 
+\end{itemize}
+Finalement, pour la racine $-\sqrt{4 + 2 * \sqrt{5}}$, tout intervalle $[a,b]$, avec $a\in ]+\infty,-\sqrt{4 + 2 * \sqrt{5}}[$ et $ b\in ] -\sqrt{4 + 2 * \sqrt{5}} ; \sqrt{4 + 2 * \sqrt{5}} [$, sont valides pour la méthode de bissection. De même pour la racine $\sqrt{4 + 2 * \sqrt{5}}$ , tout intervalle $[a,b]$, avec $a\in ] -\sqrt{4 + 2 * \sqrt{5}} ; \sqrt{4 + 2 * \sqrt{5}} [$ et $b\in ]\sqrt{4 + 2 * \sqrt{5}},+\infty[$, sont valides pour la méthode de bissection.
 \newpage
 \subsection{Partie C:}
 Pour la racine positive de $f$ ($x^{+*}=\sqrt{4+2\sqrt{5}}$),prenons l'intevalle $[\frac{5}{2},\frac{7}{2}]\ni x^{+*}$,\\
@@ -254,7 +259,7 @@ on a :
 &f(\frac{5}{2})f(\frac{7}{2})<0 \\
 \Leftrightarrow&\frac{-239}{16}\frac{769}{16}<0\\
 \end{align*}
-et $f$ est convexe sur $[\frac{5}{2},\frac{7}{2}]$.\\
+et $f$ est convexe sur $[\frac{5}{2},\frac{7}{2}]$.($\star$)(voir en fin d'exercice)\\
 Regardons l'intersection de la tangente au point $(\frac{5}{2},f(\frac{5}{2}))$ avec l'axe des abscisses,\\
 \begin{align*}
 &f(\frac{5}{2})+\partial f(\frac{5}{2})(x_1-\frac{5}{2})=0\\
@@ -268,8 +273,31 @@ De même pour la tangente au point $(\frac{7}{2},f(\frac{7}{2}))$,\\
 On a bien que $x_1,x_2\in[\frac{5}{2},\frac{7}{2}]$;\\
 alors la suite $(x_n)_{n\in\mathbb{N}}$ construite par la méthode de Newton est bien définie (pour tout $n , \partial f(x_n)\neq 0$ et $x_n\in [\frac{5}{2},\frac{7}{2}]$) et converge vers l'unique racine de $f$ dans $[\frac{5}{2},\frac{7}{2}]$.\\
 \\
-Même raisonnement pour la racine négative de $f$ ($x^{-*}=-\sqrt{4+2\sqrt{5}}$) en prenant l'intervalle $[-\frac{7}{2},-\frac{5}{2}]\ni x^{-*}$, car $f$ est une fonction paire (sommme de fonctions paires).
-\newpage
+Même raisonnement pour la racine négative de $f$ ($x^{-*}=-\sqrt{4+2\sqrt{5}}$) en prenant l'intervalle $[-\frac{7}{2},-\frac{5}{2}]\ni x^{-*}$, car $f$ est une fonction paire (sommme de fonctions paires).\\[10mm]($\star$)
+
+\begin{itemize}
+	\item[$\bullet$] Montrons que $\partial f $ est croissante sur $[\frac{5}{2},\frac{7}{2}]$\\
+		Soit $x,y \in [\frac{5}{2},\frac{7}{2}]$.\\
+		Supposons $x \leqslant y$.
+		Montrons que $\partial f(x) \leqslant \partial f(y)$.
+		On a :
+		\begin{align*}
+		\partial f(x) \leqslant \partial f(y)& \Leftrightarrow \partial_x (x^4-8x^2-4) \leqslant \partial_y (y^4-8y^2-4)\\
+		& \Leftrightarrow 4x^3-16x \leqslant 4y^3-16y\\
+		& \Leftrightarrow 4x(x^2-4)\leqslant 4y(y^2-4)\\
+		& \Leftrightarrow x(x^2-4) \leqslant y(y^2-4)\\
+		\text{Comme }x,y\in[&\frac{5}{2},\frac{7}{2}]\subset\mathbb{R}^+,\text{on peut juste montrer que :} \\
+		&(x^2-4) \leqslant (y^2-4)\\
+		&\Leftrightarrow x^2\leqslant y^2 \text{ ok car par hypothèse } x\leqslant y \Rightarrow x^2 \leqslant y^2 \text{ car } x,y\in [\frac{5}{2},\frac{7}{2}] \\ \text{ et } x^2 \text{ est croissante sur  }\mathbb{R}^+.
+		\end{align*}
+	Donc $\partial f(x) \leqslant \partial f(y)$.
+	\item[$\bullet$] Montrons que $f$ est convexe sur $[\frac{5}{2},\frac{7}{2}]$\\
+	Vrai car si $\partial f$ est croissante sur $[a,b]$ cela implique que $f$ est convexe sur $[a,b]$ (propriété du syllabus)
+\end{itemize}
+
+
+
+
 \section{Exercice 3:}
 Soit \( f : [a, b] \rightarrow \mathbb{R} \) une application unimodale càd \( \exists m \in [a, b] \) tel que \emph{f est strictement croissante} sur [a, m] et \emph{strictement décroissante} sur [m, b].
 \subsection{Partie a:}
@@ -331,11 +359,17 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 
 \subsubsection{Unicité de la racine}
 
-Il reste à montrer que cette racine est unique. Supposons par l'absurde que \( \partial f \) a au moins 2 racines distinctes càd
-$$
-\exists \xi_1 \neq \xi_2 \in ]a, b[,~ \partial f(\xi_1) = \partial f(\xi_2) = 0
-$$
-Supposons sans perte de généralité que \( \xi_1 < \xi_2 \).
+\begin{itemize}
+	\item[$\bullet$] \underline{Montrons que $\partial f(m) =0 $} \\
+		On sait, car $f$ est unimodale, que :
+		\begin{itemize}
+			\item[-] $f$ est strictement croissante sur $[a,m]$ donc pour tout $x$ dans $[a,m]$, $\partial f(x) \geqslant 0$. En particulier $\partial f(m) \geqslant 0$.
+			\item[-] $f$ est strictement décroissante sur $[m,b]$ donc pour tout $x$ dans $[m,b]$, $\partial f(x) \leqslant 0 $. En particulier $\partial f(m) \leqslant 0$
+		\end{itemize}
+		$\Rightarrow$ On a donc $\partial f(m) = 0$
+	\item[$\bullet$] \underline{Montrons l'unicité de la racine de la dérivée} \\
+		On suppose l'existance d'un $\xi \in [a,m]$ tel que $ \partial f(\xi) = 0 = \partial f(m)$ avec $ m \neq \xi$. Donc $\xi$ est dans $[a,m[$. Comme $f$ est strictement croissante sur $[a,m]$ par définition de $f$, on a que pour tout $x$ dans $[a,m]$, $\partial f(x) \geqslant 0$. Donc, pour tout $x$ dans $[a,m]$, $\partial f(x) \geqslant \partial f(\xi) = 0$. Ceci implique que $\xi$ est un minimum local de $\partial f$, donc $\partial^2 f(\xi) = 0$. Or par hypothèse sur $f$, $\xi$ est une racine simple de $\partial f$ (càd $\partial^2 f(\xi) \neq 0$). On a une contradiction. Donc on a l'unicité.
+\end{itemize}
 
 
 \newpage
