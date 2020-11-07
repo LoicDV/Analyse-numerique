@@ -73,7 +73,7 @@ let display liste =
 let () =
   (*
    * Main function, the inputs come from the command line
-   * 
+   *
    * Inputs :
    * - a : a float
    * - y : a float
