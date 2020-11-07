@@ -13,7 +13,7 @@ let rec root a y i op1 op2 =
 let q6 a y =
     if a >= (-.1.) && a <= 1. then
         let f x = x +. (a *. (sin x)) -. y in
-            let r = Root1D.brent ~tol:0.00000001 f (y -. 1.) (y +. 1.) in
+            let r = Root1D.brent ~tol:0.00000001 f (y -. a) (y +. a) in
                 [r]
     else if a >= 1. then
         let arc = acos ((-.1.) /. a) in
