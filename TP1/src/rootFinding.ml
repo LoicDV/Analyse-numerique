@@ -1,4 +1,11 @@
+(* Script in OCaml created by
+ * Dupont Loïc, Marcelis Paolo and Vanhaverbeke Maximilien *)
+
 let rec rootDeriv df a b =
+    (* Under-Function of rootFinding
+     * Find the roots of the derivative of f
+     * that will be necessary to discuss
+     * other possibility in the main function*)
     let dfa = df a and dfb = df b in
         if dfa > 0. && dfb < 0. then
             Root1D.brent ~tol:0.00000001 df a b
@@ -13,6 +20,9 @@ let rec rootDeriv df a b =
                         rootDeriv df a mid;;
 
 let rootFinding f df a b =
+    (* Main function to discover roots of any unimodal fucntion
+     * Use 4 arguments : the function with his derivative and
+     * 2 float which are the interval to search the roots *)
     let fa = f a and fb = f b in
         if fa > 0. && fb > 0. then
             []
