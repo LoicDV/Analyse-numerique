@@ -45,9 +45,10 @@ let q6 a y =
    *)
   let f x = x +. (a *. (sin x)) -. y in
     if a >= (-.1.) && a <= 1. then
-      let r = Root1D.brent f (y -. a) (y +. a) in
-        [|r|]
-    else if a >= 1. then
+      let prec = 1e-10 in
+        let r = Root1D.brent ~tol:prec f (y -. a) (y +. a) in
+          [|r|]
+    else if a > 1. then
       let df x = 1. +. (a *. (cos x)) and arc = acos ((-.1.) /. a) in
         let origin = Float.round ((y +. arc) /. (2. *. Float.pi)) in
           Array.append (root a y origin arc f df [||] (-.) (+.))
