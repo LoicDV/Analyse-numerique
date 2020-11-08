@@ -66,7 +66,7 @@ Quentin \textsc{Lambotte}
 \emph{Auteurs:} \\
 Loïc \textsc{Dupont} \\
 Maximilien \textsc{Vanhaverbeke} \\
-Paulo \textsc{Marcelis}
+Paolo \textsc{Marcelis}
 \end{flushright}
 \end{minipage}\\[2ex]
 
@@ -90,6 +90,7 @@ Paulo \textsc{Marcelis}
 \tableofcontents
 
 \newpage
+
 \section{Exercice 1:}
 
 Soit \( I \) un intervalle compact non-vide. Soit \( f \in \mathcal{C}^2(I, \mathbb{R}) \). Supposons que \( \inf\{|\partial f(x)| | x \in I\} > 0 \). On doit montrer que
@@ -177,8 +178,10 @@ $$
 On a donc bien montré la propriété \eqref{eq:1.conv}, ce qui termine la preuve de l'exercice 1.
 
 \newpage
+
 \section{Exercice 2:}
-\subsection{Partie a:}
+
+\subsection{Partie A:}
 
 \textbf{Objectif} : Trouver les racines de f : \( \mathbb{R} \rightarrow \mathbb{R} : x \mapsto x^4 - 8x^2 - 4 \).
 Autrement dit, nous devons trouver les solutions de \( P \equiv x^4 - 8x^2 - 4 = 0 \). \newline
@@ -221,6 +224,7 @@ Finalement, les racines de $P$ sont : \\
 
 
 \newpage
+
 \subsection{Partie B:}
 
 \begin{itemize}
@@ -258,6 +262,7 @@ Vrai car vrai pour $ y = x = \sqrt{4+2*\sqrt{5}}$ et vrai pour toutes valeurs pl
 \end{itemize}
 Finalement, pour la racine $-\sqrt{4 + 2 * \sqrt{5}}$, tout intervalle $[a,b]$, avec $a\in ]+\infty,-\sqrt{4 + 2 * \sqrt{5}}[$ et $ b\in ] -\sqrt{4 + 2 * \sqrt{5}} ; \sqrt{4 + 2 * \sqrt{5}} [$, sont valides pour la méthode de bissection. De même pour la racine $\sqrt{4 + 2 * \sqrt{5}}$ , tout intervalle $[a,b]$, avec $a\in ] -\sqrt{4 + 2 * \sqrt{5}} ; \sqrt{4 + 2 * \sqrt{5}} [$ et $b\in ]\sqrt{4 + 2 * \sqrt{5}},+\infty[$, sont valides pour la méthode de bissection.
 \newpage
+
 \subsection{Partie C:}
 Pour la racine positive de $f$ ($x^{+*}=\sqrt{4+2\sqrt{5}}$),prenons l'intevalle $[\frac{5}{2},\frac{7}{2}]\ni x^{+*}$,\\
 on a :
@@ -301,12 +306,12 @@ Même raisonnement pour la racine négative de $f$ ($x^{-*}=-\sqrt{4+2\sqrt{5}}$
 	Vrai car si $\partial f$ est croissante sur $[a,b]$ cela implique que $f$ est convexe sur $[a,b]$ (propriété du syllabus)
 \end{itemize}
 
-
-
-
 \section{Exercice 3:}
+
 Soit \( f : [a, b] \rightarrow \mathbb{R} \) une application unimodale càd \( \exists m \in [a, b] \) tel que \emph{f est strictement croissante} sur [a, m] et \emph{strictement décroissante} sur [m, b].
-\subsection{Partie a:}
+
+\subsection{Partie A:}
+
 Montrons que f possède au plus 2 racines. \newline \newline
 Supposons par l'absurde que f possède 3 racines càd \newline 
 \( \exists ~ u \neq v \neq w \in [a, b], ~ f(u) = f(v) = f(w) = 0 \). \newline
@@ -333,7 +338,7 @@ Montrons donc que tous les cas sont impossibles.
 
 On suppose maintenant pour le reste de la question 3 que \( f \in \mathcal{C}^{2}([a, b], \mathbb{R}) \). De plus, on suppose que toutes les racines de la dérivée de \( f \) sont simples.
 
-\subsection{Partie b:}
+\subsection{Partie B:}
 
 On doit montrer que la dérivée de \( f \) possède une unique racine dans \( ]a, b[ \).
 
@@ -379,7 +384,8 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 
 
 \newpage
-\subsection{Partie c:}
+
+\subsection{Partie C:}
 
 \begin{algorithm}
 
@@ -388,8 +394,8 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 
 \begin{algorithmic}
 
-\REQUIRE \( \partial f \), dérivée de f ; \( a, b  \in \mathbb{R} \).
-\ENSURE L'ensemble contient l'unique racine de la fonction df dans l'interval ]a, b[
+\REQUIRE \( df \), dérivée de \( f \) ; \( a, b  \in \mathbb{R} \).
+\ENSURE L'ensemble contient l'unique racine de la fonction \( df \) dans l'intervalle \( ]a, b[ \)
 \STATE \( dfa \leftarrow df(a) \)
 \STATE \( dfb \leftarrow df(b) \)
 \STATE \( prec \leftarrow 1e^{-10} \)
@@ -418,8 +424,8 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 
 \begin{algorithmic}
 
-\REQUIRE f, une fonction unimodale ; \( \partial f \), dérivée de f ; \( a, b  \in \mathbb{R} \).
-\ENSURE L'ensemble des solutions de f dans l'interval [a, b].
+\REQUIRE \( f \), une fonction unimodale ; \( df \), dérivée de \( f \) ; \( a, b  \in \mathbb{R} \).
+\ENSURE L'ensemble des solutions de \( f \) dans l'intervalle \( [a, b] \).
 \STATE \( fa \leftarrow f(a) \)
 \STATE \( fb \leftarrow f(b) \)
 \IF {\( fa > 0 ~ et ~ fb > 0 \)}
@@ -444,7 +450,7 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 		\ELSIF {\( fm = 0 \)}
 			\RETURN $[m]$
 		\ELSE
-			\RETURN $[]$;
+			\RETURN $[]$
 		\ENDIF
 	\ENDIF
 \ENDIF
@@ -452,5 +458,50 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 \end{algorithmic}
 
 \end{algorithm}
+
+\newpage
+
+\subsection{Partie D:}
+
+Il faut maintenant prouver nos algorithmes sont corrects.
+
+\subsubsection{Preuve de rootDeriv}
+
+Cette fonction prend en entrée la dérivée de \( f \), notée ici \( df \), sachant que \( f \) est une fonction unimodale de classe \( \mathcal{C}^2([a, b], \mathbb{R}) \), ainsi que \( a, b \in \mathbb{R} \) tels que \( a < b \). \\
+On sait également par hypothèse que \( df \) ne possède que des zéros simples.
+On doit montrer que la fonction retourne bien l'unique racine de \( df \) dans l'intervalle \( ]a, b[ \). \\
+Tout d'abord, on a montré précédemment (Exercice 3 B) que \( df \) a bien une unique racine dans l'intervalle \( ]a, b[ \). Il reste à montrer que le programme retourne bien cette racine. \\
+Pour cela, séparons les entrées en cas exhaustifs.
+\begin{itemize}
+
+    \item Cas 1 : \( df(a) > 0 \) et \( df(b) < 0 \) \\
+Dans ce cas, on sait que \( df(a) \cdot df(b) < 0 \) et on peut donc simplement appeler la fonction Root1D.brent qui renvoie bien l'unique racine de \( df \).
+
+    \item Cas 2 : \( df(a) = 0 \) ou \( df(b) = 0 \) \\
+On calcule alors \( mid \), la moyenne entre \( a \) et \( b \). On sait donc que \( mid \in ]a, b[ \). On sépare alors en 2 cas selon le signe de \( df(mid) \).
+    \begin{itemize}
+
+        \item Cas 2.1 : \( df(mid) = 0 \) \\
+Alors, comme \( mid \in ]a, b[ \), il s'agit bien de la racine qu'on cherche.
+
+        \item Cas 2.2 : \( df(mid) > 0 \) \\
+On sait que
+$$
+(\forall x \in [a, m],~ df(x) \geq 0) \land (\forall x \in [m, b],~ df(x) \leq 0)
+$$
+et donc
+$$
+\forall x \in ]a, b[,~ (df(x) > 0 \Longrightarrow x \in ]a, m[) \land (df(x) < 0 \Longrightarrow x \in ]m, b[)
+$$
+Comme \( mid \in ]a, b[ \) et \( df(mid) > 0 \), on en déduit que \( mid \in ]a, m[ \) ou encore \( m \in ]mid, b[ \). On relance donc la fonction rootDeriv avec cette fois comme paramètres \( df,~ mid \) et \( b \).
+
+    \item Cas 2.3 : \( df(mid) < 0 \) \\
+Par des justifications analogues à celles du cas 2.2, on sait que \( m \in ]a, mid[ \) et on relance donc la fonction rootDeriv avec cette fois comme paramètres \( df,~ a \) et \( mid \).
+
+    \end{itemize}
+
+\end{itemize}
+Puisque \( f \) est unimodale, on sait en particulier que \( f \) est croissante sur \( [a, m[ \) et décroissante sur \( ]m, b] \) et donc que \( df(a) \geq 0 \) et \( df(b) \leq 0 \). Les cas 1 et 2 sont donc exhaustifs. \\
+Le cas 1 s'arrête évidemment car il respecte les entrées de la fonction Root1D.brent et donne bien la racine de \( df \) dans \( ]a, b[ \).
 
 \end{document}
