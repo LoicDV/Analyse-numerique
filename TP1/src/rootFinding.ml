@@ -48,10 +48,10 @@ let rootFinding f df a b =
       [|b|]
     else
       let m = rootDeriv df a b in
-        if fa > 0. && fb <= 0. then
+        if fa > 0. && fb < 0. then
           let x = Root1D.brent f m b in
             [|x|]
-        else if fa <= 0. && fb > 0. then
+        else if fa < 0. && fb > 0. then
           let x = Root1D.brent f a m in
             [|x|]
         else
