@@ -14,9 +14,9 @@ let rec rootDeriv df a b =
    * - The set containing the unique solution of the function df
    *   in the interval ]a, b[
    *)
-  let dfa = df a and dfb = df b and prec = 1e-10 in
+  let dfa = df a and dfb = df b in
     if dfa > 0. && dfb < 0. then
-      Root1D.brent ~tol:prec df a b
+      Root1D.brent df a b
     else
       let mid = ((a +. b) /. 2.) in
         let dfm = df mid in
@@ -41,26 +41,26 @@ let rootFinding f df a b =
    *)
   let fa = f a and fb = f b in
     if fa > 0. && fb > 0. then
-      []
-   else if fa = 0. && fb > 0. then
-      [a]
-   else if fa > 0. && fb = 0. then
-      [b]
-   else
-      let m = rootDeriv df a b and prec = 1e-10 in
+      [||]
+    else if fa = 0. && fb > 0. then
+      [|a|]
+    else if fa > 0. && fb = 0. then
+      [|b|]
+    else
+      let m = rootDeriv df a b in
         if fa > 0. && fb <= 0. then
-          let x = Root1D.brent ~tol:prec f m b in
-            [x]
+          let x = Root1D.brent f m b in
+            [|x|]
         else if fa <= 0. && fb > 0. then
-          let x = Root1D.brent ~tol:prec f a m in
-            [x]
+          let x = Root1D.brent f a m in
+            [|x|]
         else
           let fm = f m in
             if fm > 0. then
-              let x = Root1D.brent ~tol:prec f a m and
-                  y = Root1D.brent ~tol:prec f m b in
-                [x; y]
+              let x = Root1D.brent f a m and
+                  y = Root1D.brent f m b in
+                [|x; y|]
             else if fm = 0. then
-              [m]
+              [|m|]
             else
-              [];;
+              [||];;

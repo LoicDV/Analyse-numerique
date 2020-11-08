@@ -33,9 +33,9 @@ let q5 a b c =
    *)
   if a = 0. then
     match (b, c) with
-       (0., _) -> []
-      |(_, 0.) -> [0.]
-      |(b, c)  -> let x = -.c /. b in [x]
+       (0., _) -> [||]
+      |(_, 0.) -> [|0. |]
+      |(b, c)  -> let x = -.c /. b in [|x|]
   else if a > 0. then
     (* We seek the roots of the opposite function as it is unimodal and has
      * the same roots *)
@@ -46,13 +46,13 @@ let q5 a b c =
 let display liste =
   (*
    * Input :
-   * - liste : a float list
+   * - liste : a float array
    *
    * Output :
    * - Unit expression that prints each float in liste with a precision of 8
    *   decimals and go to the next line after each float printed
    *)
-  List.iter (Printf.printf "%.10f\n") liste;;
+  Array.iter (Printf.printf "%.8f\n") liste;;
 
 let () =
   (*
