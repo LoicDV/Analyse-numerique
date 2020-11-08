@@ -1,10 +1,10 @@
 (* Script in OCaml created by
  * Dupont Loïc, Marcelis Paolo and Vanhaverbeke Maximilien *)
 
-let q5_ a b c =
+let unimodalQ5 a b c =
   (*
    * Inputs :
-   * - a : a float strictly greater than 0.
+   * - a : a float strictly smaller than 0.
    * - b : a float
    * - c : a float
    *
@@ -39,9 +39,9 @@ let q5 a b c =
   else if a > 0. then
     (* We seek the roots of the opposite function as it is unimodal and has
      * the same roots *)
-    q5_ (-.a) (-.b) (-.c)
+    unimodalQ5 (-.a) (-.b) (-.c)
   else
-    q5_ a b c;;
+    unimodalQ5 a b c;;
 
 let display liste =
   (*
