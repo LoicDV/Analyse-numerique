@@ -11,7 +11,6 @@
 \usepackage{algorithmic}
 \usepackage[french,linesnumbered,algoruled]{algorithm2e}
 
-\floatname{algorithm}{Algorithme}
 \newcommand{\EFFECT}{\textbf{Effet : }}
 \renewcommand{\algorithmicrequire}{\textbf{Entrée :}}
 \renewcommand{\algorithmicensure}{\textbf{Sortie :}}
@@ -91,6 +90,7 @@ Paolo \textsc{Marcelis}
 \end{titlepage}
 
 \newpage
+\renewcommand{\contentsname}{Table des matières}
 \tableofcontents
 
 \newpage
@@ -433,10 +433,12 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 \ELSIF {\( fa > 0 ~ et ~ fb = 0 \)}
 	\RETURN $[b]$
 \ELSE
-	\STATE \( m = rootDeriv(df, a, b) ~ et ~ prec = 1e^{-10}\)
-	\IF {\( fa > 0 ~ et ~ fb \leq 0 \)}
+	\STATE \( m \leftarrow rootDeriv(df, a, b) \)
+	\STATE \( prec \leftarrow 1e^{-10}\)
+	\IF {\( fa > 0 ~ et ~ fb < 0 \)}
 		\STATE \( x \leftarrow Root1D.brent(f, m, b, tol=prec) \)
-	\ELSIF {\( fa \leq 0 ~ et ~ fb > 0 \)}
+		\RETURN $[x]$
+	\ELSIF {\( fa < 0 ~ et ~ fb > 0 \)}
 		\STATE \( x \leftarrow Root1D.brent(f, a, m, tol=prec) \)
 		\RETURN $[x]$
 	\ELSE
@@ -468,7 +470,7 @@ Il faut maintenant prouver nos algorithmes sont corrects.
 Cette fonction prend en entrée la dérivée de \( f \), notée ici \( df \), sachant que \( f \) est une fonction unimodale de classe \( \mathcal{C}^2([a, b], \mathbb{R}) \), ainsi que \( a, b \in \mathbb{R} \) tels que \( a < b \). \\
 On sait également par hypothèse que \( df \) ne possède que des zéros simples.
 On doit montrer que la fonction retourne bien l'unique racine de \( df \) dans l'intervalle \( ]a, b[ \). \\
-Tout d'abord, on a montré précédemment (Exercice 3 B) que \( df \) a bien une unique racine dans l'intervalle \( ]a, b[ \). Il reste à montrer que le programme retourne bien cette racine. \\
+Tout d'abord, on a montré précédemment (Exercice 3.B) que \( df \) a bien une unique racine dans l'intervalle \( ]a, b[ \). Il reste à montrer que le programme retourne bien cette racine. \\
 Pour cela, séparons les entrées en cas exhaustifs.
 \begin{itemize}
 
@@ -500,6 +502,76 @@ Par des justifications analogues à celles du cas 2.2, on sait que \( m \in ]a, 
 
 \end{itemize}
 Puisque \( f \) est unimodale, on sait en particulier que \( f \) est croissante sur \( [a, m[ \) et décroissante sur \( ]m, b] \) et donc que \( df(a) \geq 0 \) et \( df(b) \leq 0 \). Les cas 1 et 2 sont donc exhaustifs. \\
-Le cas 1 s'arrête évidemment car il respecte les entrées de la fonction Root1D.brent et donne bien la racine de \( df \) dans \( ]a, b[ \).
+Le cas 1 s'arrête évidemment car il respecte les entrées de la fonction Root1D.brent et donne bien la racine de \( df \) dans \( ]a, b[ \). \\
+La cas 2.1 retourne la bonne valeur comme expliqué plus haut. \\
+En ce qui concerne le cas 2, si on considère qu'on ne tombe jamais dans le cas 2.1, on voit qu'après une itération, au moins une de nos bornes est non nulle car la distance entre nos bornes a été divisée par 2 donc au moins une d'entre elles appartient à l'ensemble \( ]a, b[ \) avec les \( a \) et \( b \) initiaux. \\
+Si la deuxième borne ne devenait jamais nullle, puisque la distance entre les deux bornes tend vers 0, et comme \( m \) est toujours entre les deux bornes, on aurait alors par passage à la limite que \( m = a \) ou \( m = b \) ce qui est impossible vu que par hypothèse \( m \in ]a, b[ \) avec \( a \neq b \).
+Donc les deux bornes deviendront toutes deux non nulles en un temps fini et on entrera dans le cas 1.
+
+\newpage
+
+\subsubsection{Preuve de rootFinding}
+
+Cette fonction prend 4 entrées :
+\begin{itemize}
+    \item Une fonction \( f \) unimodale de classe \( \mathcal{C}^2([a, b], \mathbb{R}) \)
+    \item La dérivée de \( f \), notée \( df \). Elle ne doit avoir que des zéros simples.
+    \item Un réel \( a \), la borne gauche de l'intervalle sur lequel on cherche les solutions
+    \item Un réel \( b \), la borne droite de l'intervalle sur lequel on cherche les solutions
+\end{itemize}
+Il faut montrer que ce programme retourne bien toutes les racines de \( f \). \\
+Pour cela, séparons en cas exhaustifs.
+\begin{itemize}
+
+    \item Cas 1 : \( f(a) > 0 \) et \( f(b) > 0 \) \quad (on rentre dans la condition de la ligne 3) \\
+Comme \( f \) est croissante sur \( [a, m] \), on sait que \( \forall x \in [a, m],~ f(x) \geq f(a) > 0 \). \\
+De même, comme \( f \) est décroissante sur \( [m, b] \), on sait que \( \forall x \in [m, b],~ f(x) \geq f(b) > 0 \). \\
+On a alors \( \forall x \in [a, b],~ f(x) > 0 \) et la fonction n'a donc pas de racines sur \( [a, b] \). On retourne donc la liste vide.
+
+    \item Cas 2 : \( f(a) = 0 \) et \( f(b) > 0 \) \quad (on rentre dans la condition de la ligne 5) \\
+On sait alors que \( a \) est une racine de \( f \). \\
+Par stricte croissance de \( f \) sur \( [a, m] \), on sait que \( \forall x \in ]a, m],~ f(x) > f(a) = 0 \). \\
+De même, par décroissance de \( f \) sur \( [m, b] \), on sait que \( \forall x \in [m, b],~ f(x) \geq f(b) > 0 \). \\
+On a alors \( \forall x \in ]a, b],~ f(x) > 0 \) et la fonction n'a donc pas de racines sur \( ]a, b] \). On retourne donc le singleton \( \{a\} \), \( a \) étant la seule racine de \( f \) dans \( [a, b] \).
+
+    \item Cas 3 : \( f(a) > 0 \) et \( f(b) = 0 \) \quad (on rentre dans la condition de la ligne 7) \\
+De manière analogue au cas 2, par croissance de \( f \) sur \( [a, m] \) et par stricte décroissance de \( f \) sur \( [m, b] \), on voit que \( b \) est l'unique racine de \( f \) et on retourne donc le singleton \( \{b\} \).
+
+    \item Cas 4 : \( f(a) < 0 \) ou \( f(b) < 0 \) ou \( f(a) = f(b) = 0 \) \quad (on rentre dans la condition de la ligne 9) \\
+On sait par l'exercice 3.B que \( m \) est l'unique racine de \( df \) dans l'intervalle \( ]a, b[ \). On utilise donc la fonction rootDeriv pour calculer la valeur de \( m \).
+
+    \begin{itemize}
+    
+        \item Cas 4.1 : \( f(a) > 0 \) et \( f(b) < 0 \) \quad (on rentre dans la condition de la ligne 12) \\
+Par croissance de \( f \) sur \( [a, m] \), on sait que \( \forall x \in [a, m],~ f(x) \geq f(a) > 0 \). Il n'y a donc pas de racines dans \( [a, m] \) \\
+Comme \( f(m) > 0 \) par l'argument ci-dessus et \( f(b) < 0 \) par hypothèse, on a \( f(m) \cdot f(b) < 0 \) et donc Root1D.brent nous donne une racine de \( [m, b] \). Par stricte décroissance de \( f \) sur \( [m, b] \), cette racine est unique et on renvoie donc bien toutes les racines de \( f \) sur \( [a, b] \).
+
+        \item Cas 4.2 : \( f(a) < 0 \) et \( f(b) > 0 \) \quad (on rentre dans la condition de la ligne 15) \\
+Par des arguments analogues au cas 4.1, en appliquant Root1D.brent sur l'intervalle \( [a, m] \), on trouve l'unique racine de \( f \) dans l'intervalle \( [a, b] \).
+
+        \item Cas 4.3 : \( f(a) \leq 0 \) et \( f(b) \leq 0 \) \quad (on rentre dans la condition de la ligne 18) \\
+On divise encore en cas selon le signe de \( m \).
+
+        \begin{itemize}
+        
+            \item Cas 4.3.1 : \( f(m) > 0 \) \quad (on rentre dans la condition de la ligne 20) \\
+On sait que \( f \) est strictement croissante sur \( [a, m[ \) et strictement décroissante sur \( ]m, b] \) et \( f(a) \leq 0 \) et \( f(b) \leq 0 \) donc il y a une unique racine dans chacun de ces deux intervalles. Comme \( f(a) \cdot f(m) \leq 0 \) et \( f(m) \cdot f(b) \leq 0 \), on trouve bien ces deux racines via Root1D.brent avec les bornes \( a \) et \( m \) et encore une fois Root1D.brent avec les bornes \( m \) et \( b \).
+            
+            \item Cas 4.3.2 : \( f(m) = 0 \) \quad (on rentre dans la condition de la ligne 24) \\
+Par stricte croissance de \( f \) sur \( [a, m] \) et stricte décroissance de \( f \) sur \( [m, b] \), on sait que \( m \) est l'unique racine de \( f \) sur \( [a, b] \).
+            
+            \item Cas 4.3.3 : \( f(m) < 0 \) \quad (on rentre dans la condition de la ligne 26) \\
+Par stricte croissance de \( f \) sur \( [a, m] \) et stricte décroissance de \( f \) sur \( [m, b] \), comme \( f(m) < 0 \), il n'y a aucune racine de \( f \) dans l'intervalle \( [a, b] \), on retourne donc la liste vide.
+            
+        \end{itemize}
+    
+    \end{itemize}
+
+\end{itemize}
+Par exhaustivité de nos cas, on a bien prouvé que notre algorithme fonctionne.
+
+\newpage
+
+\section{Exercice 6}
 
 \end{document}
