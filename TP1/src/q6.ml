@@ -68,7 +68,7 @@ let display liste =
    * - Unit expression that prints each float in liste with a precision of 8
    *   decimals and go to the next line after each float printed
    *)
-  List.iter (Printf.printf "%.8f\n") liste;;
+  List.iter (Printf.printf "%.10f\n") liste;;
 
 let () =
   (*
