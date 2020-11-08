@@ -383,7 +383,7 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 \begin{algorithmic}
 
 \REQUIRE \( \partial f \), dérivée de f ; \( a, b  \in \mathbb{R} \).
-\ENSURE The set containing the unique solution of the function df in the interval ]a, b[.
+\ENSURE L'ensemble contient l'unique racine de la fonction df dans l'interval ]a, b[
 \STATE \( dfa \leftarrow df(a) \)
 \STATE \( dfb \leftarrow df(b) \)
 \STATE \( prec \leftarrow 1e^{-10} \)
@@ -404,10 +404,7 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 
 \end{algorithmic}
 
-\end{algorithm}
-
-%----------------------------------------------------------------------------
-
+\end{algorithm}%---------------------------------------------------------------------------
 \begin{algorithm}
 
 \caption{rootFinding}
@@ -416,7 +413,7 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 \begin{algorithmic}
 
 \REQUIRE f, une fonction unimodale ; \( \partial f \), dérivée de f ; \( a, b  \in \mathbb{R} \).
-\ENSURE Une liste des racines de f notée \( \varnothing \), \{ \( x_1 \) \} ou \{ \( x_1, x_2 \) \}.
+\ENSURE L'ensemble des solutions de f dans l'interval [a, b].
 \STATE \( fa \leftarrow f(a) \)
 \STATE \( fb \leftarrow f(b) \)
 \IF {\( fa > 0 ~ et ~ fb > 0 \)}
