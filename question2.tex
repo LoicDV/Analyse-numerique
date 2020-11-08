@@ -377,7 +377,40 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 
 \begin{algorithm}
 
-\caption{Recherche de racine}
+\caption{rootDeriv}
+\label{Modele pour un algo}
+
+\begin{algorithmic}
+
+\REQUIRE \( \partial f \), dérivée de f ; \( a, b  \in \mathbb{R} \).
+\ENSURE The set containing the unique solution of the function df in the interval ]a, b[.
+\STATE \( dfa \leftarrow df(a) \)
+\STATE \( dfb \leftarrow df(b) \)
+\STATE \( prec \leftarrow 1e^{-10} \)
+\IF {\(dfa > 0 ~ et ~ dfb < 0 \)}
+	\STATE \( x \leftarrow Root1D.brent(df, a, b, tol=prec) \)
+	\RETURN $x$
+\ELSE
+	\STATE \( mid \leftarrow \frac{a + b}{2} \)
+	\STATE \( dfm \leftarrow df(mid) \)
+	\IF {\( dfm = 0 \)}
+		\RETURN $mid$
+	\ELSIF {\( dfm > 0 \)}
+		\RETURN \( rootDeriv(df, mid, b) \)
+	\ELSE
+		\RETURN \( rootDeriv(df, a, mid) \)
+	\ENDIF
+\ENDIF
+
+\end{algorithmic}
+
+\end{algorithm}
+
+%----------------------------------------------------------------------------
+
+\begin{algorithm}
+
+\caption{rootFinding}
 \label{Modele pour un algo}
 
 \begin{algorithmic}
@@ -386,40 +419,35 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 \ENSURE Une liste des racines de f notée \( \varnothing \), \{ \( x_1 \) \} ou \{ \( x_1, x_2 \) \}.
 \STATE \( fa \leftarrow f(a) \)
 \STATE \( fb \leftarrow f(b) \)
-\STATE \( dfa \leftarrow df(a) \)
-\STATE \( dfb \leftarrow df(b) \)
-\STATE \( liste \leftarrow \{\} \)
-\IF {\((fa < 0 ~ et ~ fb > 0) ~ ou ~ (fa < 0 ~ et ~ fb = 0 ~ et ~ dfb > 0) \)}
-	\STATE \( x \leftarrow Root1D.brent(f, a, b) \)
-	\STATE ajouter x à la liste
-\ELSIF {\((fa > 0 ~ et ~ fb < 0) ~ ou ~ (fa = 0 ~ et ~ fb < 0 ~ et ~ dfa < 0) \)}
-	\STATE \( x \leftarrow Root1D.brent(f, a, b) \)
-	\STATE ajouter x à la liste
-\ELSIF {\( fa = 0 ~ et ~ fb = 0 \)}
-	\STATE ajouter a, b à la liste
+\IF {\( fa > 0 ~ et ~ fb > 0 \)}
+	\RETURN  $[]$
 \ELSIF {\( fa = 0 ~ et ~ fb > 0 \)}
-	\STATE ajouter a à la liste
+	\RETURN $[a]$
 \ELSIF {\( fa > 0 ~ et ~ fb = 0 \)}
-	\STATE ajouter b à la liste
-\ELSIF {\( fa < 0 ~ et ~ fb = 0 ~ et ~ dfb < 0 \)}
-	\STATE \( m \leftarrow Root1D.brent(df, a, b) \)
-	\STATE \( x \leftarrow Root1D.brent(f, a, m) \)
-	\STATE ajouter x, b à la liste
-\ELSIF {\( fa = 0 ~ et ~ fb < 0 ~ et ~ dfa > 0 \)}
-	\STATE \( m \leftarrow Root1D.brent(df, a, b) \)
-	\STATE \( x \leftarrow Root1D.brent(f, m, b) \)
-	\STATE ajouter a, x à la liste
-\ELSIF {\( fa < 0 ~ et ~ fb < 0 ~ et ~ (dfa \times dfb) < 0 \)}
-	\STATE \( m \leftarrow Root1D.brent(df, a, b) \)
-	\STATE \( x \leftarrow Root1D.brent(f, a, m) \)
-	\STATE \( y \leftarrow Root1D.brent(f, m, b) \)
-	\STATE ajouter x, y à la liste
+	\RETURN $[b]$
+\ELSE
+	\STATE \( m = rootDeriv(df, a, b) ~ et ~ prec = 1e^{-10}\)
+	\IF {\( fa > 0 ~ et ~ fb \leq 0 \)}
+		\STATE \( x \leftarrow Root1D.brent(f, m, b, tol=prec) \)
+	\ELSIF {\( fa \leq 0 ~ et ~ fb > 0 \)}
+		\STATE \( x \leftarrow Root1D.brent(f, a, m, tol=prec) \)
+		\RETURN $[x]$
+	\ELSE
+		\STATE \( fm \leftarrow f(m) \)
+		\IF {\( fm > 0 \)}
+			\STATE \( x \leftarrow Root1D.brent(f, a, m, tol=prec) \)
+			\STATE \( y \leftarrow Root1D.brent(f, m, b, tol=prec) \)
+			\RETURN $[x, y]$
+		\ELSIF {\( fm = 0 \)}
+			\RETURN $[m]$
+		\ELSE
+			\RETURN $[]$;
+		\ENDIF
+	\ENDIF
 \ENDIF
-\RETURN liste
 
 \end{algorithmic}
 
 \end{algorithm}
-
 
 \end{document}
