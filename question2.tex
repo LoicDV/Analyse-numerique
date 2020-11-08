@@ -8,7 +8,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hyperref}
-\usepackage{algorithmic, algorithm}
+\usepackage{algorithmic}
+\usepackage[french,linesnumbered,algoruled]{algorithm2e}
 
 \floatname{algorithm}{Algorithme}
 \newcommand{\EFFECT}{\textbf{Effet : }}
@@ -34,6 +35,9 @@
 \renewcommand{\algorithmicreturn}{\textbf{retourner}}
 \renewcommand{\algorithmictrue}{\textbf{vrai}}
 \renewcommand{\algorithmicfalse}{\textbf{faux}}
+\makeatletter
+\renewcommand{\algocf@captiontext}[2]{\AlCapNameSty{\centerline{\AlCapNameFnt{}#2}}}
+\makeatother
 
 \geometry{hmargin=2cm,vmargin=1.5cm}
 %\renewcommand{\baselinestretch}{0.96}
@@ -80,7 +84,7 @@ Paolo \textsc{Marcelis}
 \includegraphics[height=1.5cm]{logofs.jpg}
 \end{tabular}
 \end{center}~\\
- 
+
 {\large Année académique 2020-2021}
 
 \end{center}
@@ -118,7 +122,7 @@ et
 On sait par l'hypothèse \( f \in \mathcal{C}^2(I, \mathbb{R}) \) que \( \partial f \) et \( \partial^2 f \) sont des fonctions continues sur \( I \). Comme la valeur absolue est aussi une fonction continue, par composition de fonctions continues, \( | \partial f | \) et \( | \partial^2 f | \) sont des aussi fonctions continues sur \( I \). \\
 Alors, comme \( I \) est un compact non-vide par hypothèse, le théorème des bornes atteintes nous dit que ces fonctions atteignent leurs bornes. En particulier,
 $$
-\sup \{ | \partial^2 f(x) || x \in I \} \in \mathbb{R} \quad \text{et} \quad 
+\sup \{ | \partial^2 f(x) || x \in I \} \in \mathbb{R} \quad \text{et} \quad
 \inf \{ |\partial f(x)|| x \in I \} \in \mathbb{R}
 $$
 
@@ -133,7 +137,7 @@ De même, un infimum étant en particulier un minorant, on sait que
 $$
 \forall \eta \in I \text{ tq } \partial f(\eta) \neq 0,~ \inf \{ |\partial f(x)|| x \in I \} \leq |\partial f(\eta)|
 $$
-Comme \( \inf \{ |\partial f(x)|| x \in I \} > 0 \) par hypothèse, \( \inf \{ |\partial f(x)|| x \in I \} \in \mathbb{R}^{>0} \). On sait aussi que 
+Comme \( \inf \{ |\partial f(x)|| x \in I \} > 0 \) par hypothèse, \( \inf \{ |\partial f(x)|| x \in I \} \in \mathbb{R}^{>0} \). On sait aussi que
 \(\forall \eta \in I \text{ tq } \partial f(\eta) \neq 0,~ |\partial f(\eta)| \in \mathbb{R}^{>0} \).
 Donc, par décroissance de la fonction \( x \mapsto 1/x \) sur \( \mathbb{R}^{>0} \), on a
 \begin{equation}
@@ -186,7 +190,7 @@ On a donc bien montré la propriété \eqref{eq:1.conv}, ce qui termine la preuv
 \textbf{Objectif} : Trouver les racines de f : \( \mathbb{R} \rightarrow \mathbb{R} : x \mapsto x^4 - 8x^2 - 4 \).
 Autrement dit, nous devons trouver les solutions de \( P \equiv x^4 - 8x^2 - 4 = 0 \). \newline
 Tout d'abord, posons \( y = x^2 \).
-On obtient : 
+On obtient :
 
 \begin{align*}
 	Q &\equiv y^2 - 8y - 4 = 0\\ \\
@@ -209,17 +213,17 @@ Donc, les racines de Q sont \( y_1 = 4 + 2 * \sqrt{5} ~ et ~ y_2 = 4 - 2 * \sqrt
 	(x_{1,2})^2 = 4 + 2 * \sqrt{5}&\text{ et }(x_{3,4})^2 = 4 - 2 * \sqrt{5}
 \end{align*}
 
-	Cependant, $(x_{3,4})^2 = 4 - 2 * \sqrt{5}$ est impossible car on a : 
-	
+	Cependant, $(x_{3,4})^2 = 4 - 2 * \sqrt{5}$ est impossible car on a :
+
 \begin{align*}
 	2 = \sqrt{4} \leq \sqrt{5} \leq \sqrt{9} = 3 \text{ car } \surd \text{ est croissante} \\
 	\text{Donc } 4 - 2 * \sqrt{5} \leq 4 - 2 * \sqrt{4} = 4 - 2 * 2 = 0 \\
-	i.e. ~ (x_{3,4})^2 = 4 - 2 * \sqrt{5} \leq 0 
+	i.e. ~ (x_{3,4})^2 = 4 - 2 * \sqrt{5} \leq 0
 \end{align*}
 Finalement, les racines de $P$ sont : \\
 \begin{align*}
 	(x_{1,2})^2 = 4 + 2 * \sqrt{5} \\
-	\Leftrightarrow x_{1,2} = \pm \sqrt{4 + 2 * \sqrt{5}}	
+	\Leftrightarrow x_{1,2} = \pm \sqrt{4 + 2 * \sqrt{5}}
 \end{align*}
 
 
@@ -248,7 +252,7 @@ Finalement, les racines de $P$ sont : \\
 		&\Leftrightarrow 0 \leq (y^4 - x^4) - 8(y^2 - x^2) \\
 		&\Leftrightarrow 8 \leq (y^2 + x^2) &&\text{pour y $\neq$ x} \\
 	\end{align*}
-Vrai car vrai pour $ y = x = \sqrt{4+2*\sqrt{5}}$ et vrai pour toutes valeurs plus grandes car la fonction $x^2$ est croissantes sur $\mathbb{R}^+$. Pour $x=y$ , trivial car $f(x)=f(y)$.	
+Vrai car vrai pour $ y = x = \sqrt{4+2*\sqrt{5}}$ et vrai pour toutes valeurs plus grandes car la fonction $x^2$ est croissantes sur $\mathbb{R}^+$. Pour $x=y$ , trivial car $f(x)=f(y)$.
 	\item[\(\lceil 3 \rfloor\)] trivial car, par le fait que la fontion f est paire et croissante sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \), on a que f est décroissante sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \).
 	\item[\(\lceil 4 \rfloor\)] par la croissance sur \( [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \) ainsi que sa décroissance sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \), on sait que \( \forall x \in ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \cup [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [, f \left( \sqrt{4 + 2 * \sqrt{5}}\right) \leq f \left( x \right) \) (car $f$ est paire). Mais \( f \left( \sqrt{4 + 2 * \sqrt{5}} \right) = 0 \) car c'est une racine de f (pareil pour \( f \left( - \sqrt{4 + 2 * \sqrt{5}} \right) = 0 \) ). \newline
 	Donc \( 0 = f \left( \sqrt{4 + 2 * \sqrt{5}} \right) \leq f \left( x \right) \) càd \( 0 \leq f \left( x \right) \). Donc f est positive sur \( ] -\infty ; -\sqrt{4 + 2 * \sqrt{5}} ] \cup [ \sqrt{4 + 2 * \sqrt{5}} ; +\infty [ \)
@@ -313,7 +317,7 @@ Soit \( f : [a, b] \rightarrow \mathbb{R} \) une application unimodale càd \( \
 \subsection{Partie A:}
 
 Montrons que f possède au plus 2 racines. \newline \newline
-Supposons par l'absurde que f possède 3 racines càd \newline 
+Supposons par l'absurde que f possède 3 racines càd \newline
 \( \exists ~ u \neq v \neq w \in [a, b], ~ f(u) = f(v) = f(w) = 0 \). \newline
 Sans perte de généralité, supposons que \( u < v < w \). \newline
 On a donc 3 cas :
@@ -330,7 +334,7 @@ Montrons donc que tous les cas sont impossibles.
 	\begin{enumerate}
 		\item[\(\lceil 3.1 \rfloor\)] Si u est m, alors \( u, v ~ et ~ w \in [m, b] \) et par \(\lceil 1 \rfloor\), c'est impossible. \textbf{Contradiction}.
 		\item[\(\lceil 3.2 \rfloor\)] Si w est m, alors \( u, v ~ et ~ w \in [a, m] \) et par \(\lceil 2 \rfloor\), c'est impossible. \textbf{Contradiction}.
-		\item[\(\lceil 3.3 \rfloor\)] Si v est m, alors \( \forall x \in [a, m[, ~ y \in ]m, b], ~ f(x) < f(v) \) (par la stricte croissance de f) et \( f(v) > f(y)\) (par la stricte décroissance de f). Cependant, en particulier, \( x = u \) et \( y = v \) et qui sont racines de f. Donc, \( 0 = f(u) < f(v = 0 \) et \( 0 = f(u) > f(w) = 0 \) qui sont tout 2 impossibles. \textbf{Contradiction}. 
+		\item[\(\lceil 3.3 \rfloor\)] Si v est m, alors \( \forall x \in [a, m[, ~ y \in ]m, b], ~ f(x) < f(v) \) (par la stricte croissance de f) et \( f(v) > f(y)\) (par la stricte décroissance de f). Cependant, en particulier, \( x = u \) et \( y = v \) et qui sont racines de f. Donc, \( 0 = f(u) < f(v = 0 \) et \( 0 = f(u) > f(w) = 0 \) qui sont tout 2 impossibles. \textbf{Contradiction}.
 	\end{enumerate}
 \end{enumerate}
 
@@ -389,10 +393,7 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 
 \begin{algorithm}
 
-\caption{rootDeriv}
-\label{Modele pour un algo}
-
-\begin{algorithmic}
+\begin{algorithmic}[1]
 
 \REQUIRE \( df \), dérivée de \( f \) ; \( a, b  \in \mathbb{R} \).
 \ENSURE L'ensemble contient l'unique racine de la fonction \( df \) dans l'intervalle \( ]a, b[ \)
@@ -413,16 +414,13 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 		\RETURN \( rootDeriv(df, a, mid) \)
 	\ENDIF
 \ENDIF
-
+\caption{\textbf{Algorithme : }rootDeriv}
 \end{algorithmic}
 
 \end{algorithm}%---------------------------------------------------------------------------
 \begin{algorithm}
 
-\caption{rootFinding}
-\label{Modele pour un algo}
-
-\begin{algorithmic}
+\begin{algorithmic}[1]
 
 \REQUIRE \( f \), une fonction unimodale ; \( df \), dérivée de \( f \) ; \( a, b  \in \mathbb{R} \).
 \ENSURE L'ensemble des solutions de \( f \) dans l'intervalle \( [a, b] \).
@@ -454,7 +452,7 @@ Par exhaustivité des cas, on a bien montré l'existance d'une racine de \( \par
 		\ENDIF
 	\ENDIF
 \ENDIF
-
+\caption{\textbf{Algorithme : }rootFinding}
 \end{algorithmic}
 
 \end{algorithm}
