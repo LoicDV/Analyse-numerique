@@ -1,0 +1,5 @@
+# dune ocaml-merlin --no-print-directory
+# OCAMLPARAM: unset
+# Workspace root: /home/loic/Documents/Bac_3/anum2.1/git/Analyse-numerique/TP2
+$ /usr/bin/nproc > /tmp/dune76f223.output 2> /dev/null
+# Auto-detected concurrency: 4
