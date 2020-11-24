@@ -2,7 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{graphicx}
 \usepackage{tabularx}
-\usepackage[french, english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{geometry}
 \usepackage{booktabs}
 \usepackage{hyperref}
@@ -11,6 +12,7 @@
 \geometry{hmargin=2cm,vmargin=1.5cm}
 %\renewcommand{\baselinestretch}{0.96}
 \newcommand{\IR}{\mathbb{R}}
+\newcommand{\IN}{\mathbb{N}}
 
 \begin{document}
 
@@ -56,7 +58,7 @@ Maximilien \textsc{Vanhaverbeke}
 \end{tabular}
 \end{center}~\\
  
-{\large Année académique 2019-2020}
+{\large Année académique 2020-2021}
 
 \end{center}
 \end{titlepage}
@@ -66,30 +68,95 @@ Maximilien \textsc{Vanhaverbeke}
 
 \newpage
 
-Soit \(A \in \IR^{M \times N} \text{ avec rang } A = N \leq M \). \\
+\noindent
+Soit \( M, N \in \IN \). Soit \( A \in \IR^{M \times N} \) avec rang\( A = N \leq M \). Soit \( b \in \mathbb{R}^n \). \\
 Intéressons-nous à la résolution de l'équation \( Ax = b \). \\
-Les exercices suivants consistent à regarder la meilleur solution au sens des moindres carrés. \\
-C'est-à-dire, la valeur de x qui minimise la fonction :
-\[
-	x \mapsto ~ \mid Ax - b \mid_2 \label{eq1: norme deux}
-\]
-\section{Exercice 1 :}
+Les exercices suivants consistent à regarder la meilleur solution au sens des moindres carrés càd la valeur de x qui minimise la fonction :
+\begin{equation}
+    \label{eq:1}
+    x \mapsto |Ax - b|_2
+\end{equation}
+Pour les questions suivantes, nous allons utiliser les notations ci-dessous :
+$$
+A =
+\begin{pmatrix}
+a_{1, 1} & \cdots & a_{1, N} \\
+\vdots   &        & \vdots \\
+a_{M, 1} & \cdots & a_{M, N}
+\end{pmatrix}
+= (a_{i, j})_{
+\tiny \begin{matrix}
+1 \leq i \leq M \\
+1 \leq j \leq N
+\end{matrix}}
+, \quad b =
+\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_m
+\end{pmatrix}
+= (b_i)_{1 \leq i \leq M}, \quad x =
+\begin{pmatrix} x_1 \\
+\vdots \\
+x_n
+\end{pmatrix}
+= (x_j)_{1 \leq j \leq N}
+$$
 
+\section{Exercice 1}
 
+Soit \( x \in \IR^n \). On doit montrer que \( x \) réalise le minimum de \( x \mapsto |Ax - b|_2 \) \eqref{eq:1} si et seulement si \( x \) réalise le minimum de
+\begin{equation}
+    \label{eq:2}
+    x \mapsto |Ax - b|_2^2
+\end{equation}
+Commençons par montrer que si \( x \) réalise le minimum de \eqref{eq:1}, alors \( x \) réalise le minimum de \eqref{eq:2}. \\
+Supposons que \( x \) réalise le minimum de \eqref{eq:1} càd
+$$
+\forall y \in \IR^n,~ |Ax - b|_2 \leq |Ay - b|_2
+$$
+Comme toute norme est définie positive, on sait que pour tout \( z \in \IR^m,~ |z|_2 \in [0, +\infty[ \). \\
+Alors, comme chaque membre de l'inégalité ci-dessus est positif, par croissance de la fonction \( x \mapsto x^2 \) sur \( [0, +\infty[ \), on a
+$$
+\forall y \in \IR^n,~ |Ax - b|_2^2 \leq |Ay - b|_2^2
+$$
+càd \( x \) réalise le minimum de \eqref{eq:2}. \\
+Il reste à montrer que si \( x \) réalise le minimum de \eqref{eq:2}, alors \( x \) réalise le minimum de \eqref{eq:1}. \\
+Supposons que \( x \) réalise le minimum de \eqref{eq:2} càd
+$$
+\forall y \in \IR^n,~ |Ax - b|_2^2 \leq |Ay - b|_2^2
+$$
+Comme tout carré d'un nombre réel est positif, par croissance de la fonction \( x \mapsto \sqrt{x} \) sur \( [0, +\infty[ \), on a
+$$
+\forall y \in \IR^n,~ \sqrt{|Ax - b|_2^2} \leq \sqrt{|Ay - b|_2^2}
+$$
+Comme les normes sont définies positives, \( \sqrt{|Ax - b|_2^2} = |Ax - b|_2 \) et \( \forall y \in \IR^n,~ \sqrt{|Ay - b|_2^2} = |Ay - b|_2 \). \\
+Par conséquent, on a bien
+$$
+\forall y \in \IR^n,~ |Ax - b|_2 \leq |Ay - b|_2
+$$
+càd \( x \) réalise le minimum de \eqref{eq:1}. \\
+On a donc bien montré que \( x \) réalise le minimum de \eqref{eq:1}, alors \( x \) réalise le minimum de \eqref{eq:2}.
 
+\newpage
 
+\section{Exercice 2}
 
-
-
-
-
-
-
-
-
-
-
-
-
+Soit \( x \in \IR^n \). On doit montrer que \( x \) réalise le minimum de \( x \mapsto |Ax - b|_2 \) \eqref{eq:1} si et seulement si \( x \) vérifie l'équation
+\begin{equation}
+    \label{eq:3}
+    A^T A x = A^T b
+\end{equation}
+Commençons par montrer que si \( x \) réalise le minimum de \eqref{eq:1}, alors \( x \) vérifie l'équation \eqref{eq:3}. \\
+Supposons que \( x \) réalise le minimum de \eqref{eq:1} càd
+$$
+\forall y \in \IR^n,~ |Ax - b|_2 \leq |Ay - b|_2
+$$
+Par l'exercice 1, on sait que c'est équivalent à dire que
+$$
+\forall y \in \IR^n,~ |Ax - b|_2^2 \leq |Ay - b|_2^2
+$$
+Montrons que la fonction \( f : x \mapsto |Ax - b|_2^2 \) admet des dérivées partielles en tout point de \( \IR^n \). \\
+Soit \( y = (y_1, \cdots, y_n) \in \IR^n \).
 
 \end{document}
