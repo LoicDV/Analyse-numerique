@@ -7,7 +7,7 @@ let assign_mat mat_a mat_b t =
   mat_a.{1, 2} <- 2. *. t;
   mat_a.{2, 1} <- t;
   mat_a.{2, 2} <- exp t;
-  mat_a.{3, 1} <- (tan t) ** (-1.); (* Pas tangeante mais arctangeante *)
+  mat_a.{3, 1} <- (atan t);
   mat_a.{3, 2} <- t;
   mat_b.{1, 1} <- t;
   mat_b.{2, 1} <- t ** 2.;
