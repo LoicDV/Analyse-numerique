@@ -18,4 +18,4 @@ let () =
   for i = 0 to (m - 1) do
     b.{i + 1, 1} <- (Float.of_string Sys.argv.(3 + (m * n) + i))
   done;
-  printf "@[%a@]@\n" pp_fmat (q1 a b);;
+  printf "%a@\n" pp_fmat (q1 a b);;
