@@ -1,6 +1,4 @@
 open Lacaml.D
-open Lacaml.Io
-open Format
 
 let a t =
   let mat_a = Mat.create 3 2 in
@@ -39,6 +37,11 @@ let db t =
 let q3 t =
   Q2.q2 a b da db t;;
 
+let display vector n =
+  for j = 1 to n do
+    Printf.printf "%.8f\n" vector.{j, 1};
+  done;;
+
 let () =
   let t = Float.of_string(Sys.argv.(1)) in
-  printf "%a@\n" pp_fmat (q3 t);;
+  display (q3 t) 2 ;;

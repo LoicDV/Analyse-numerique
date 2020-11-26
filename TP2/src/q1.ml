@@ -1,11 +1,14 @@
 open Lacaml.D
-open Lacaml.Io
-open Format
 
 let q1 a b =
   let sol = gemm ~transa:`T a b in
   gesv (gemm ~transa:`T a a) sol;
   sol;;
+
+let display vector n =
+  for j = 1 to n do
+    Printf.printf "%.8f\n" vector.{j, 1};
+  done;;
 
 let () =
   let m = int_of_string Sys.argv.(1) and n = int_of_string Sys.argv.(2) in
@@ -18,4 +21,4 @@ let () =
   for i = 0 to (m - 1) do
     b.{i + 1, 1} <- (Float.of_string Sys.argv.(3 + (m * n) + i))
   done;
-  printf "%a@\n" pp_fmat (q1 a b);;
+  display (q1 a b) n;;
