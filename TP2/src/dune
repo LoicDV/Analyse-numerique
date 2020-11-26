@@ -1,7 +1,7 @@
 (executables
-    (names        q1)
+    (names        q1 q3)
     (libraries    lacaml))
 
 (alias
     (name         exe)
-    (deps         q1.exe))
+    (deps         q1.exe q3.exe))
