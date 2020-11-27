@@ -7,7 +7,7 @@ let q1 a b =
 
 let display vector n =
   for j = 1 to n do
-    Printf.printf "%.8f\n" vector.{j, 1};
+    Printf.printf "%.10f\n" vector.{j, 1};
   done;;
 
 let () =

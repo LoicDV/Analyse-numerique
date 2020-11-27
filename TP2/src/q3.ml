@@ -31,15 +31,15 @@ let db t =
   let d_mat_b = Mat.create 3 1 in
   d_mat_b.{1, 1} <- 1.;
   d_mat_b.{2, 1} <- 2. *. t;
-  d_mat_b.{3, 1} <- -2. *. t /. (1. +. t ** 2.) ** 2.;
+  d_mat_b.{3, 1} <- (-.2.) *. t /. ((1. +. (t ** 2.)) ** 2.);
   d_mat_b;;
 
 let q3 t =
-  Q2.q2 a b da db t;;
+  Q2.deriv a b da db t;;
 
 let display vector n =
   for j = 1 to n do
-    Printf.printf "%.8f\n" vector.{j, 1};
+    Printf.printf "%.10f\n" vector.{j, 1};
   done;;
 
 let () =
