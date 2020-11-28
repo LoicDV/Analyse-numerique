@@ -244,6 +244,27 @@ On sait que \( x \in \inte \IR = \IR \) et qu'il s'agit d'un minimum global de \
     & \quad \text{ càd } \quad 2 A^T A x - 2 A^T b = 0 \\
     & \quad \text{ càd } \quad A^T A x = A^T b
 \end{align*}
-On a donc bien montré que si \( x \) réalise le minimum de \eqref{eq:1}, alors \( x \) vérifie l'équation \eqref{eq:3}.
+On a donc bien montré que si \( x \) réalise le minimum de \eqref{eq:1}, alors \( x \) vérifie l'équation \eqref{eq:3}. \\
+Il reste à monter que si \( x \) vérifie l'équation \eqref{eq:3}, alors \( x \) réalise le minimum de \eqref{eq:1}. \\
+Supposons que \( x \) vérifie l'équation \eqref{eq:3} càd \( A^T A x = A^T b \). \\
+On sait que \( \forall y \in \IR^N,~ |Ay - b|_2^2 = (Ay - b ~|~ Ay - b) = (Ay ~|~ Ay) - 2(Ay ~|~ b) + (b ~|~ b) \) par bilinéarité du produit scalaire. Par conséquent
+\begin{align*}
+    x \text{ réalise le minimum de } \eqref{eq:1}
+    & \Longleftrightarrow \forall y \in \IR^n,~ |Ax - b|_2^2 \leq |Ay - b|_2^2 \\
+    & \Longleftrightarrow (Ax - b ~|~ Ax - b) \leq (Ay - b ~|~ Ay - b) \\
+    & \Longleftrightarrow (Ax ~|~ Ax) - 2(Ax ~|~ b) \leq (Ay ~|~ Ay) - 2(Ay ~|~ b)
+\end{align*}
+Par défintion du produit scalaire, on a
+$$
+\forall u, v \in \IR^n,~ (u ~|~ v) = \sum_{i = 1}^n (u_1 v_1)
+$$
+On remarque donc que \( \forall u, v \in \IR^M,~ (u ~|~ v) \) est égal à l'unique terme de la matrice \( u^T v \). \\
+Or, par hypothèse on sait que \( A^TAx = A^Tb \) et donc \( (Ax)^T Ax = x^T A^T A x = x^T A^Tb = (Ax)^T b \). \\
+Par conséquent \( (Ax ~|~ Ax) = (Ax ~|~ b) \) et donc
+\begin{align*}
+    x \text{ réalise le minimum de } \eqref{eq:1}
+    & \Longleftrightarrow (Ax ~|~ b) - 2(Ax ~|~ b) \leq (Ay ~|~ Ay) - 2(Ay ~|~ b) \\
+    & \Longleftrightarrow 0 \leq (Ay ~|~ Ay) - 2(Ay ~|~ b) + (Ax ~|~ b)
+\end{align*}
 
 \end{document}
