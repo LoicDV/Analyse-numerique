@@ -1,5 +1,8 @@
 open Lacaml.D
 
+open Bigarray
+type vect = (float, float64_elt, fortran_layout) Array2.t
+
 let a (t: float) =
   (* Matrix A :  (  sin t   ,  2t   )
                  (     t    ,  e^t  )
@@ -71,7 +74,7 @@ let q3 (t: float) =
   *)
   Q2.deriv a b da db t;;
 
-let display (vector: (num_type, 'a, 'b) Bigarray.Array2.t) (n: int) =
+let display (vector: vect) (n: int) =
   (* Output :
         Unit expression that prints each float in the matrix with a precision
         of 10 decimals and go to the next line after each float printed.
