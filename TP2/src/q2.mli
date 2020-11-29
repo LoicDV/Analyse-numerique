@@ -11,6 +11,6 @@ val deriv : (float -> mat) -> (float -> mat) ->
         t (a real) --> matrix, each of whose components will be evaluated in
         the value t. The matrices are not insignificant because they will be
         used to solve the linear equation A^t * A * X = A^t * b where the first
-        and third functions represent A and its derivative respectively as well
+        and third function represent A and its derivative respectively as well
         as the second and fourth but for b.
     *)
