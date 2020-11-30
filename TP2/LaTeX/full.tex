@@ -9,11 +9,40 @@
 \usepackage{hyperref}
 \usepackage{verbatim}
 \usepackage{pdfpages}
+\usepackage{algorithmic}
+\usepackage[french,linesnumbered,algoruled]{algorithm2e}
 \geometry{hmargin=2cm,vmargin=1.5cm}
 %\renewcommand{\baselinestretch}{0.96}
 \newcommand{\IR}{\mathbb{R}}
 \newcommand{\IN}{\mathbb{N}}
 \newcommand{\inte}{\operatorname{int}}
+\newcommand{\Image}{\operatorname{Im}}
+\newcommand{\EFFECT}{\textbf{Effet : }}
+\renewcommand{\algorithmicrequire}{\textbf{Entrée :}}
+\renewcommand{\algorithmicensure}{\textbf{Sortie :}}
+\renewcommand{\algorithmicend}{\textbf{fin}}
+\renewcommand{\algorithmicif}{\textbf{si}}
+\renewcommand{\algorithmicthen}{\textbf{alors}}
+\renewcommand{\algorithmicelse}{\textbf{sinon}}
+\renewcommand{\algorithmicelsif}{\algorithmicelse\ \algorithmicif}
+\renewcommand{\algorithmicendif}{\algorithmicend\ \algorithmicif}
+\renewcommand{\algorithmicfor}{\textbf{pour}}
+\renewcommand{\algorithmicforall}{\textbf{pour tout}}
+\renewcommand{\algorithmicdo}{\textbf{faire}}
+\renewcommand{\algorithmicendfor}{\algorithmicend\ \algorithmicfor}
+\renewcommand{\algorithmicwhile}{\textbf{tant que}}
+\renewcommand{\algorithmicendwhile}{\algorithmicend\ \algorithmicwhile}
+\renewcommand{\algorithmicloop}{\textbf{boucle}}
+\renewcommand{\algorithmicendloop}{\algorithmicend\ \algorithmicloop}
+\renewcommand{\algorithmicrepeat}{\textbf{répéter}}
+\renewcommand{\algorithmicuntil}{\textbf{jusqu'à}}
+\renewcommand{\algorithmicprint}{\textbf{imprimer}}
+\renewcommand{\algorithmicreturn}{\textbf{retourner}}
+\renewcommand{\algorithmictrue}{\textbf{vrai}}
+\renewcommand{\algorithmicfalse}{\textbf{faux}}
+\makeatletter
+\renewcommand{\algocf@captiontext}[2]{\AlCapNameSty{\centerline{\AlCapNameFnt{}#2}}}
+\makeatother
 
 \begin{document}
 
@@ -256,15 +285,137 @@ On sait que \( \forall y \in \IR^N,~ |Ay - b|_2^2 = (Ay - b ~|~ Ay - b) = (Ay ~|
 \end{align*}
 Par défintion du produit scalaire, on a
 $$
-\forall u, v \in \IR^n,~ (u ~|~ v) = \sum_{i = 1}^n (u_1 v_1)
+\forall u, v \in \IR^n,~ (u ~|~ v) = \sum_{i = 1}^n (u_i v_i)
 $$
 On remarque donc que \( \forall u, v \in \IR^M,~ (u ~|~ v) \) est égal à l'unique terme de la matrice \( u^T v \). \\
-Or, par hypothèse on sait que \( A^TAx = A^Tb \) et donc \( (Ax)^T Ax = x^T A^T A x = x^T A^Tb = (Ax)^T b \). \\
+De plus, par hypothèse on sait que \( A^TAx = A^Tb \) et donc \( (Ax)^T Ax = x^T A^T A x = x^T A^Tb = (Ax)^T b \). \\
 Par conséquent \( (Ax ~|~ Ax) = (Ax ~|~ b) \) et donc
 \begin{align*}
     x \text{ réalise le minimum de } \eqref{eq:1}
     & \Longleftrightarrow (Ax ~|~ b) - 2(Ax ~|~ b) \leq (Ay ~|~ Ay) - 2(Ay ~|~ b) \\
     & \Longleftrightarrow 0 \leq (Ay ~|~ Ay) - 2(Ay ~|~ b) + (Ax ~|~ b)
 \end{align*}
+Montrons que cette inégalité est toujours vraie. Pour celà, nous allons la minorer par une valeur positive. \\
+$$
+\textbf{Nous n'avons pas réussi à montrer l'inégalité.}
+$$
+Puisque l'inégalité est toujours vraie, on a bien montré que \( x \) réalise le minimum de \eqref{eq:1}.
+
+\newpage
+
+\section{Exercice 3}
+
+On doit montrer que sous les hypothèses sous lesquelles nous travaillons, énoncées au sommet de la page 2, l'équation \eqref{eq:3} possède toujours une unique solution. \\
+Commençons par montrer l'existance d'une telle solution. On sait par les exercices 1 et 2 que si \( x \in \IR^N \) est un point qui réalise le minimum de \eqref{eq:1}, alors \( x \) vérifie l'équation \eqref{eq:3}. Montrons donc que \eqref{eq:1} admet un minimum. \\
+Tout d'abord, on sait par le cours d'algèbre linéaire que \( x \mapsto Ax \) est une application linéaire. \\
+Par conséquent, \( \Image(x \mapsto Ax) \) est un espace-vectoriel. On peut donc regarder la projection orthogonale de \( b \) sur \( \Image(x \mapsto Ax) \), que nous noterons \( Ax^* \). On sait que \( |Ax - b|_2 \) est la distance usuelle entre \( Ax \) et \( b \), que nous noterons \( d(Ax, b) \). \\
+Alors, par le thorème de Pythagore,
+$$
+\forall y \in \IR^N,~ |Ay - b|_2 = d(Ay, b) = \sqrt{d(Ax^*, b)^2 + d(Ax^*, Ay)^2} \geq d(Ax^*, b) = |Ax^* - b|_2
+$$
+On a donc bien que \( Ax^* \) est l'image du minimum de la fonction \eqref{eq:1} et comme \( Ax^* \in \Image(x \mapsto Ax) \), il existe \( x \in \IR^N \) tel que \( Ax = Ax^* \). Il reste à montrer l'unicité de ce minimum. \\
+On sait par hypothèse que le rang de \( A \) est \( N \), càd \( \dim{(\Image(x \mapsto Ax))} = N \). \\
+On sait également que \( \dim{(\operatorname{Dom}(x \mapsto Ax))} = \dim{(\IR^N)} = N \). Alors, par le théorème du rang la dimension du noyau de cette fonction est 0 càd la fonction est injective. Par conséquent, le minimum est bien unique, ce qui termine notre preuve.
+
+\newpage
+
+\noindent
+Pour les questions suivantes, nous allons supposer que \( A \) et \( b \) varient dans le temps. \\
+Soit donc \( A : \IR \to \IR^{M \times N} : t \mapsto A(t) \) et \( b : \IR \to \IR^M : t \mapsto b(t) \). Comme à chaque temps \( t \) on peut trouver l'unique solution \( x_t \) de l'équation \( (A(t))^T A(t) x_t = (A(t))^T b(t) \) \eqref{eq:3}, on définit la fonction \( x : \IR \to \IR^N : t \mapsto x(t) := x_t \). \\
+Nous allons dans les exercices suivants nous intéresser à approximer la fonction \( \partial x \) en un temps \( t \) donné.
+
+\section{Exercice 5}
+
+\begin{algorithm}
+
+\begin{algorithmic}[1]
+
+\REQUIRE \( a,~ b \) des fonctions qui renvoient vers des matrices, \( da,~ db \) des fonctions qui renvoient vers les dérivées des matrices et \( t \) un réel qui représente le temps.
+\ENSURE Retourne une approximation de la dérivée de la solution \( X \) au temps \( t \) de l'équation \( A^tAX = A^tb \).
+\STATE \( at \leftarrow a(t) \)
+\STATE \( dat \leftarrow da(t) \)
+\STATE \( bt \leftarrow b(t) \)
+\STATE \( x \leftarrow q1(at, b) \) \\
+(La multiplication scalaire est réalisée par Lapack). \\
+\STATE \( sol \leftarrow \) résultat de l'expression \( \partial_k A^t(t) \left( b(t) - A(t) * x(t) \right) + A^t(t) \left( \partial_k b(t) - \partial_k A(t) x(t) \right) \)
+\RETURN le résultat de l'équation linéaire \( AX = b \) au temps t avec \( A = A^t * A \text{ et } b = sol \).
+\caption{\textbf{Algorithme : }deriv}
+
+\end{algorithmic}
+
+\end{algorithm}
+\noindent
+On doit montrer que notre algorithme retourne bien \( \partial x(t) \). \\
+Commençons par montrer que
+$$
+\forall M^*, N^*, K^* \in \IN^{\geq 1},~ \forall A : \IR \to \IR^{M^* \times K^*},~ \forall B : \IR \to \IR^{K^* \times N^*},~ \partial (AB) = (\partial A) B + A \partial(B)
+$$
+Soit \( M^*, N^*, K^* \in \IN^{\geq 1} \). Soit \( A : \IR \to \IR^{M^* \times K^*} \). Soit \( B : \IR \to \IR^{K^* \times N^*} \). On a alors
+\begin{align*}
+    \partial (AB)
+    & = \partial \left(
+        \begin{pmatrix}
+        a_{1, 1} & \hdots & a_{1, K^*} \\
+        \vdots & & \vdots \\
+        a_{M^*, 1} & \hdots & a_{M^*, K^*}
+        \end{pmatrix}
+        \begin{pmatrix}
+        b_{1, 1} & \hdots & b_{1, N^*} \\
+        \vdots & & \vdots \\
+        b_{K^*, 1} & \hdots & b_{K^*, N^*}
+        \end{pmatrix} \right) \\
+    & = \partial
+        \begin{pmatrix}
+        \displaystyle \sum_{k = 1}^{K^*} (a_{1, k} b_{k, 1}) & \hdots & \displaystyle \sum_{k = 1}^{K^*} (a_{1, k} b_{k, N^*}) \\
+        \vdots & & \vdots \\
+        \displaystyle \sum_{k = 1}^{K^*} (a_{M^*, k} b_{k, 1}) & \hdots & \displaystyle \sum_{k = 1}^{K^*} (a_{M^*, k} b_{k, N^*})
+        \end{pmatrix} \\
+    & = \begin{pmatrix}
+        \displaystyle \sum_{k = 1}^{K^*} \partial (a_{1, k} b_{k, 1}) & \hdots & \displaystyle \sum_{k = 1}^{K^*} \partial (a_{1, k} b_{k, N^*}) \\
+        \vdots & & \vdots \\
+        \displaystyle \sum_{k = 1}^{K^*} \partial (a_{M^*, k} b_{k, 1}) & \hdots & \displaystyle \sum_{k = 1}^{K^*} \partial (a_{M^*, k} b_{k, N^*})
+        \end{pmatrix} \\
+    & = \begin{pmatrix}
+        \displaystyle \sum_{k = 1}^{K^*} ((\partial a_{1, k}) b_{k, 1} + a_{1, k} \partial b_{k, 1} )) & \hdots & \displaystyle \sum_{k = 1}^{K^*} ((\partial a_{1, k}) b_{k, N^*} + a_{1, k} \partial b_{k, N^*} )) \\
+        \vdots & & \vdots \\
+        \displaystyle \sum_{k = 1}^{K^*} ((\partial a_{M^*, k}) b_{k, 1} + a_{M^*, k} \partial b_{k, 1} )) & \hdots & \displaystyle \sum_{k = 1}^{K^*} ((\partial a_{M^*, k}) b_{k, N^*} + a_{M^*, k} \partial b_{k, N^*} ))
+        \end{pmatrix} \\
+    & = \begin{pmatrix}
+        \displaystyle \sum_{k = 1}^{K^*} ((\partial a_{1, k}) b_{k, 1}) & \hdots & \displaystyle \sum_{k = 1}^{K^*} ((\partial a_{1, k}) b_{k, N^*}) \\
+        \vdots & & \vdots \\
+        \displaystyle \sum_{k = 1}^{K^*} ((\partial a_{M^*, k}) b_{k, 1}) & \hdots & \displaystyle \sum_{k = 1}^{K^*} ((\partial a_{M^*, k}) b_{k, N^*})
+        \end{pmatrix}
+        +
+        \begin{pmatrix}
+        \displaystyle \sum_{k = 1}^{K^*} (a_{1, k} \partial b_{k, 1} )) & \hdots & \displaystyle \sum_{k = 1}^{K^*} (a_{1, k} \partial b_{k, N^*} )) \\
+        \vdots & & \vdots \\
+        \displaystyle \sum_{k = 1}^{K^*} (a_{M^*, k} \partial b_{k, 1} )) & \hdots & \displaystyle \sum_{k = 1}^{K^*} (a_{M^*, k} \partial b_{k, N^*} ))
+        \end{pmatrix} \\
+    & = (\partial A) B + A \partial(B)
+\end{align*}
+On a donc bien montré que la dérivée d'un produit se généralise aux fonctions allant des réels aux matrices finies et au produit matriciel. \\
+Utilisons donc ce résultat afin de dériver chaque membre de l'équation \( (A(t))^T A(t) x(t) = (A(t))^T b(t) \). On a alors
+$$
+\partial ((A(t))^T A(t) x(t)) = (\partial (A(t))^T) A(t) x(t) + (A(t))^T \partial(A(t)) x(t) + (A(t))^T A(t) \partial x(t)
+$$
+et
+$$
+\partial ((A(t))^T b(t)) = \partial((A(t))^T) b(t) + (A(t))^T \partial b(t)
+$$
+Comme on sait que \( (A(t))^T A(t) x(t) = (A(t))^T b(t) \), on a
+$$
+(\partial (A(t))^T) A(t) x(t) + (A(t))^T \partial(A(t)) x(t) + (A(t))^T A(t) \partial x(t) = \partial((A(t))^T) b(t) + (A(t))^T \partial b(t)
+$$
+On connait \( x(t) \) car il s'agit de l'unique solution de l'équation \( A(t)^T A(t) x(t) = A^T(t) b(t) \) par \eqref{eq:3}. \\
+Regardons donc l'équation
+$$
+(A(t))^T A(t) X = \partial((A(t))^T) (b(t) - A(t) x(t)) + (A(t))^T (\partial b(t) - \partial(A(t)) x(t))
+$$
+On sait que \( X = \partial x(t) \) en est une solution par l'égalité des dérivées marquées ci-dessus. \\
+Il reste à montrer qu'il s'agit de l'unique solution.
+$$
+\textbf{Nous n'avons pas réussi à montrer l'unicité.}
+$$
+Comme il s'agit de l'unique solution, en la calculant via les méthodes de LAPACK on trouve bien \( \partial x(t) \), ce qui montre que notre algorithme est correct.
 
 \end{document}
