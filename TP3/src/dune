@@ -1,0 +1,7 @@
+(executables
+    (names      pendulum solve max_theta tours)
+    (libraries  curve-sampling))
+
+(alias
+    (name       exe)
+    (deps       pendulum.exe solve.exe max_theta.exe tours.exe))
