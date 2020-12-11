@@ -23,6 +23,6 @@ let solve segway_mass stick_mass speed length inertia f =
     du.{4} <- matrix.{2, 1} in
   let u u0 theta0 t =
     let init = to_vec [| u0; theta0; 0.; 0. |] in
-    let vec = Odepack.vec(Odepack.lsoda ode init 0. t) in
+    let vec = Odepack.vec(Odepack.lsoda ode init 0. t ~mxstep:1000) in
     [| vec.{1}; vec.{2} |] in
   u
