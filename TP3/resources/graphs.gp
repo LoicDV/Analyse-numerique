@@ -1,0 +1,18 @@
+set terminal pngcairo
+set grid
+set output "graph1.png"
+plot "graph1.dat" with l lt 1 lw 2 title "x(t)"
+set output "graph1_p.png"
+plot "graph1.dat" with l lt 5 lw 2 title "x(t)", "graph1.dat" with p lt 1 pt 5 ps 0.2 title "points"
+set output "graph2.png"
+plot "graph2.dat" with l lt 1 lw 2 title "theta(t)"
+set output "graph2_p.png"
+plot "graph2.dat" with l lt 5 lw 2 title "theta(t)", "graph2.dat" with p lt 1 pt 5 ps 0.2 title "points"
+set output "graph3.png"
+plot "graph3.dat" with l lt 1 lw 2 title "d x(t)"
+set output "graph3_p.png"
+plot "graph3.dat" with l lt 5 lw 2 title "d x(t)", "graph3.dat" with p lt 1 pt 5 ps 0.2 title "points"
+set output "graph4.png"
+plot "graph4.dat" with l lt 1 lw 2 title "d theta(t)"
+set output "graph4_p.png"
+plot "graph4.dat" with l lt 5 lw 2 title "d theta(t)", "graph4.dat" with p lt 1 pt 5 ps 0.2 title "points"
