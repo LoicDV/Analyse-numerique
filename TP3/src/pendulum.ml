@@ -1,6 +1,8 @@
 open Lacaml.D
 open Bigarray
 
+type vec = (float, float64_elt, fortran_layout)Array1.t
+
 let to_vec a = Array1.of_array float64 fortran_layout a
 
 let solve segway_mass stick_mass speed length inertia f =
