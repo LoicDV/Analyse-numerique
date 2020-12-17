@@ -1,6 +1,6 @@
 (executables
     (names      pendulum solve max_theta tours)
-    (libraries  curve-sampling odepack lacaml))
+    (libraries  root1d curve-sampling odepack lacaml))
 
 (alias
     (name       exe)
