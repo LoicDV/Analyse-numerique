@@ -5,7 +5,7 @@ type vec = (float, float64_elt, fortran_layout)Array1.t
 
 let to_vec a = Array1.of_array float64 fortran_layout a
 
-let solve segway_mass stick_mass speed length inertia f =
+let solve ?full:(full = false) segway_mass stick_mass speed length inertia f =
   let g t u = [| [| (f t u.{1} u.{3} u.{2} u.{4}) -. (speed *. u.{3}) +.
                     (stick_mass *. length *. (sin u.{2}) *. u.{4} *. u.{4}) |];
                  [| (-. stick_mass) *. 9.81 *. length *. (sin u.{2}) |] |] in
@@ -26,5 +26,8 @@ let solve segway_mass stick_mass speed length inertia f =
   let u x0 theta0 t =
     let init = to_vec [| x0; theta0; 0.; 0. |] in
     let vec = Odepack.vec(Odepack.lsoda ode init 0. t ~mxstep:3000) in
-    [| vec.{1}; vec.{2} |] in
+    if full then
+      [| vec.{1}; vec.{2}; vec.{3}; vec.{4} |]
+    else
+      [| vec.{1}; vec.{2} |] in
   u
