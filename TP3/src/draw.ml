@@ -1,6 +1,5 @@
 open Curve_sampling
 open Printf
-open Lacaml.D
 open Bigarray
 
 type vec = (float, float64_elt, fortran_layout)Array1.t
@@ -23,7 +22,7 @@ let () =
                 %S with p lt 1 pt 5 ps 0.2 title \"points\"\n"
       !n fname title fname
   in
-  
+  (*
   let f t x dx theta dtheta = 0.3 *. (sin t) +.
                               (0. *. (x +. dx +. theta +. dtheta)) in
   let u t = (Pendulum.solve 0.5 0.2 0.1 0.3 0.006 f) 0. 3.2 t in
@@ -41,7 +40,7 @@ let () =
   save graph_theta_2 ~title:"theta(t)";
   save graph_dtheta_1 ~title:"d theta(t)";
   save graph_dtheta_2 ~title:"d theta(t)";
-  
+  *)
   (*
   let f omega t x dx theta dtheta = 0.3 *. (sin (omega *. t)) +.
                               (0. *. (x +. dx +. theta +. dtheta)) in
@@ -114,3 +113,8 @@ let () =
       [| vec.{1}; vec.{2}; vec.{3}; vec.{4} |] in
     u in
   *)
+  let f omega t x dx theta dtheta = 0.3 *. (sin (omega *. t)) +.
+                              (0. *. (x +. dx +. theta +. dtheta)) in
+  let u omega = Tours.root_solve 0.5 0.2 0.1 0.3 0.006 (f omega) in
+  let graph_u = fn u 0. 5. ~n:100000 in
+  save graph_u ~title:"Test";
