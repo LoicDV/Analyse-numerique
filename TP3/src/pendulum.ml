@@ -25,8 +25,8 @@ let solve ?full:(full = false) segway_mass stick_mass speed length inertia f =
     du.{4} <- matrix.{2, 1} in
   let u x0 theta0 t =
     let init = to_vec [| x0; theta0; 0.; 0. |] in
-    let vec = Odepack.vec(Odepack.lsoda ~atol:10e-9 ~mxstep:3000 ode init 0. t)
-    in
+    let vec = Odepack.vec(Odepack.lsoda ~rtol:10e-9 ~atol:10e-9 ~mxstep:3000
+    ode init 0. t) in
     if full then
       [| vec.{1}; vec.{2}; vec.{3}; vec.{4} |]
     else
